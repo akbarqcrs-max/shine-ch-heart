@@ -278,9 +278,32 @@ const WhoWeAre = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {/* Teal to green gradient glow background */}
-                <div className="absolute -inset-6 bg-gradient-to-br from-teal-500/50 via-emerald-500/40 to-green-500/50 rounded-3xl blur-xl transition-all duration-500 group-hover:blur-2xl group-hover:scale-105" />
-                <div className="absolute -inset-3 bg-gradient-to-tr from-teal-600/40 to-green-600/40 rounded-2xl transition-all duration-300 group-hover:from-teal-500/50 group-hover:to-green-500/50" />
+                {/* Teal to green gradient glow background with pulse animation */}
+                <motion.div 
+                  className="absolute -inset-6 bg-gradient-to-br from-teal-500/50 via-emerald-500/40 to-green-500/50 rounded-3xl blur-xl"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div 
+                  className="absolute -inset-3 bg-gradient-to-tr from-teal-600/40 to-green-600/40 rounded-2xl"
+                  animate={{ 
+                    scale: [1, 1.03, 1],
+                    opacity: [0.6, 0.9, 0.6]
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                />
                 
                 {/* Image container with teal-green gradient */}
                 <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-teal-50 via-emerald-50 to-green-100 border-2 border-teal-500/40 shadow-2xl shadow-teal-500/20 transition-all duration-300 group-hover:border-teal-400/60 group-hover:shadow-teal-400/30">
