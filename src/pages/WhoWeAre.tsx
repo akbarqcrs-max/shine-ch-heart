@@ -41,6 +41,8 @@ const journeyMilestones = [
   { year: "2018", description: "Received Excellence in Healthcare Support Award for outstanding community service." },
   { year: "2021", description: "Expanded digital services and launched virtual support groups during the pandemic." },
   { year: "2024", description: "Celebrating 15 years of hope, serving over 50,000 patients and families." },
+  { year: "2025", description: "Launching new research partnerships and advanced treatment support programs." },
+  { year: "2026", description: "Expanding regional presence with new centers and innovative care initiatives." },
 ];
 
 const WhoWeAre = () => {
