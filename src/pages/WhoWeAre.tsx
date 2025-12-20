@@ -273,28 +273,32 @@ const WhoWeAre = () => {
               transition={{ duration: 0.6 }}
               className="relative flex justify-center"
             >
-              <div className="relative">
-                {/* Elegant frame background */}
-                <div className="absolute -inset-6 bg-gradient-to-br from-amber-600/40 via-amber-700/30 to-amber-800/40 rounded-3xl blur-xl" />
-                <div className="absolute -inset-3 bg-gradient-to-t from-amber-900/50 to-amber-600/30 rounded-2xl" />
+              <motion.div 
+                className="relative group cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {/* Teal to green gradient glow background */}
+                <div className="absolute -inset-6 bg-gradient-to-br from-teal-500/50 via-emerald-500/40 to-green-500/50 rounded-3xl blur-xl transition-all duration-500 group-hover:blur-2xl group-hover:scale-105" />
+                <div className="absolute -inset-3 bg-gradient-to-tr from-teal-600/40 to-green-600/40 rounded-2xl transition-all duration-300 group-hover:from-teal-500/50 group-hover:to-green-500/50" />
                 
-                {/* Image container with warm elegant background */}
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-amber-100 via-amber-50 to-amber-200 border-2 border-amber-600/30 shadow-2xl">
+                {/* Image container with teal-green gradient */}
+                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-teal-50 via-emerald-50 to-green-100 border-2 border-teal-500/40 shadow-2xl shadow-teal-500/20 transition-all duration-300 group-hover:border-teal-400/60 group-hover:shadow-teal-400/30">
                   {/* Inner decorative border */}
-                  <div className="absolute inset-2 border border-amber-600/20 rounded-xl pointer-events-none" />
+                  <div className="absolute inset-2 border border-gradient-to-b from-teal-500/30 to-green-500/30 rounded-xl pointer-events-none transition-all duration-300 group-hover:border-teal-400/40" />
                   <img
                     src={chMuhammadKoyaImg}
                     alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
-                    className="w-full h-full object-contain object-top p-2"
+                    className="w-full h-full object-contain object-top p-2 transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 
-                {/* Corner accents */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-amber-600/50 rounded-tl-lg" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-amber-600/50 rounded-tr-lg" />
-                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-amber-600/50 rounded-bl-lg" />
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-amber-600/50 rounded-br-lg" />
-              </div>
+                {/* Corner accents with teal-green theme */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-teal-500/60 rounded-tl-lg transition-colors duration-300 group-hover:border-teal-400" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-green-500/60 rounded-tr-lg transition-colors duration-300 group-hover:border-green-400" />
+                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-green-500/60 rounded-bl-lg transition-colors duration-300 group-hover:border-green-400" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-teal-500/60 rounded-br-lg transition-colors duration-300 group-hover:border-teal-400" />
+              </motion.div>
             </motion.div>
 
             {/* Content */}
