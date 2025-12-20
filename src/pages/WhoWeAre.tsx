@@ -35,22 +35,21 @@ const team = [
 ];
 
 const journeyMilestones = [
-  { year: "2009", description: "CH Center established in Dubai, UAE with a vision to support cancer patients and their families." },
-  { year: "2012", description: "Launched comprehensive patient support programs and expanded community outreach initiatives." },
-  { year: "2015", description: "Opened new facilities and introduced specialized counseling services for families." },
-  { year: "2018", description: "Received Excellence in Healthcare Support Award for outstanding community service." },
-  { year: "2021", description: "Expanded digital services and launched virtual support groups during the pandemic." },
-  { year: "2024", description: "Celebrating 15 years of hope, serving over 50,000 patients and families." },
-  { year: "2025", description: "Launching new research partnerships and advanced treatment support programs." },
-  { year: "2026", description: "Expanding regional presence with new centers and innovative care initiatives." },
+  { year: "2010", description: "C.H. Centre established in memory of C.H. Muhammad Koya Sahib, beginning operations in Kerala and Thrissur." },
+  { year: "2012", description: "Expanded services including free medicines, food assistance, and medical support for underprivileged patients." },
+  { year: "2015", description: "Launched ambulance services and blood donation programs to support the community." },
+  { year: "2018", description: "Introduced free dialysis, ultrasound scans, and lab tests for patients in need." },
+  { year: "2021", description: "Expanded funeral care services and volunteer programs across Kerala." },
+  { year: "2024", description: "Began construction of C.H. Centre near Thrissur Medical College for cancer patient accommodation." },
+  { year: "2025", description: "Continuing to expand facilities and services for cancer patients and their caregivers." },
 ];
 
 const WhoWeAre = () => {
   return (
     <Layout>
       <PageHeader
-        title="Who We Are"
-        description="CH Center is a dedicated charity organization committed to supporting cancer patients and their families through every step of their journey."
+        title="Let's Unite for the C.H. Centre"
+        description="C.H. Centre is a charitable organization established in memory of C.H. Muhammad Koya Sahib, serving underprivileged patients since 2010."
         breadcrumbs={[{ name: "Who We Are" }]}
         image={whoWeAreImg}
       />
@@ -71,10 +70,10 @@ const WhoWeAre = () => {
               </div>
               <h2 className="font-heading text-2xl font-bold mb-4">Our Mission</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To provide comprehensive support, care, and resources to individuals and families 
-                affected by cancer, empowering them with hope and helping them navigate their 
-                journey with dignity. We believe that no one should face cancer alone, and we 
-                are committed to being there every step of the way.
+                To provide comprehensive support and essential services to underprivileged patients 
+                and their families, including free medicines, food, medical assistance, ambulance service, 
+                blood donation, funeral care, free dialysis, ultrasound scans, lab tests, and 
+                accommodation facilities for cancer patients coming for treatment.
               </p>
             </motion.div>
 
@@ -91,10 +90,10 @@ const WhoWeAre = () => {
               </div>
               <h2 className="font-heading text-2xl font-bold mb-4">Our Vision</h2>
               <p className="text-primary-foreground/90 leading-relaxed">
-                A world where every cancer patient has access to quality care, emotional support, 
-                and the resources they need to live their best life. We envision a future where 
-                cancer no longer means facing uncertainty alone, and where communities come 
-                together to support those in need.
+                A community where every underprivileged patient has access to quality healthcare, 
+                essential services, and the support they need. With our new C.H. Centre near 
+                Thrissur Medical College, we envision providing accommodation and facilities 
+                for cancer patients and their caregivers coming for treatment.
               </p>
             </motion.div>
           </div>
@@ -120,7 +119,7 @@ const WhoWeAre = () => {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground text-lg"
             >
-              Building hope and support since 2009
+              Serving communities in Kerala since 2010
             </motion.p>
           </div>
 
@@ -206,7 +205,7 @@ const WhoWeAre = () => {
               viewport={{ once: true }}
               className="font-heading text-3xl md:text-4xl font-bold mb-6"
             >
-              <span className="text-gradient-heading">Founded on Hope, Built on Compassion</span>
+              <span className="text-gradient-heading">In Memory of C.H. Muhammad Koya Sahib</span>
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -216,18 +215,19 @@ const WhoWeAre = () => {
               className="text-muted-foreground leading-relaxed space-y-4"
             >
               <p>
-                CH Center was established in 2009 by a group of healthcare professionals and 
-                cancer survivors who recognized the need for comprehensive support services 
-                beyond medical treatment.
+                C.H. Centre is a charitable organization established in memory of C.H. Muhammad Koya Sahib. 
+                Operating in different parts of Kerala and in Thrissur since 2010, we have been dedicated 
+                to serving underprivileged patients and their families.
               </p>
               <p>
-                What started as a small support group has grown into a full-service charity 
-                center serving thousands of patients and families across the region. Our 
-                journey has been marked by countless stories of courage, resilience, and hope.
+                We provide numerous services including free medicines, food, medical assistance, 
+                volunteer services, ambulance service, blood donation, funeral care, free dialysis, 
+                ultrasound scans, lab tests, and much more for those in need.
               </p>
               <p>
-                Today, we continue to expand our services and reach, always guided by our 
-                founding principle: that no one should face cancer alone.
+                Currently, our construction work is progressing for the C.H. Centre near Thrissur 
+                Medical College, aimed at providing accommodation and other essential facilities 
+                for cancer patients and their caregivers coming for treatment.
               </p>
             </motion.div>
           </div>
