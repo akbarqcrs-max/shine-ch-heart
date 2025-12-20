@@ -8,6 +8,7 @@ import {
   Sparkles, 
   Newspaper, 
   MessageCircle,
+  Phone,
   ArrowRight,
   Play,
   CheckCircle

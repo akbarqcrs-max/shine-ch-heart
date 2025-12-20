@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,14 +38,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* About */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Heart className="w-5 h-5 text-primary-foreground fill-primary-foreground" />
-              </div>
-              <span className="font-heading font-bold text-xl">
-                CH <span className="text-primary">Center</span>
-              </span>
-            </Link>
+            <Logo />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Caring for families with a community of support. When someone faces cancer, family stays. And we stay with them.
             </p>
@@ -123,7 +117,7 @@ const Footer = () => {
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} CH Center. All rights reserved.
+              © {currentYear} CHOS. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
