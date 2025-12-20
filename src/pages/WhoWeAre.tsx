@@ -363,6 +363,67 @@ const WhoWeAre = () => {
         </div>
       </section>
 
+      {/* Advisory Board Section */}
+      <section className="py-20 lg:py-28 bg-section-alt">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+            >
+              Leadership
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-3xl md:text-4xl font-bold mb-4"
+            >
+              <span className="text-gradient-heading">Advisory Board</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-lg max-w-2xl mx-auto"
+            >
+              Our dedicated advisors guiding the mission of C.H. Centre
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Placeholder cards for 4 advisory board members */}
+            {[1, 2, 3, 4].map((index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-background rounded-2xl p-6 text-center shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="relative w-32 h-32 mx-auto mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full" />
+                  <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-primary/20">
+                    <Users className="w-12 h-12 text-muted-foreground/50" />
+                  </div>
+                </div>
+                <h3 className="font-heading text-lg font-bold mb-1 group-hover:text-primary transition-colors">
+                  Member {index}
+                </h3>
+                <p className="text-primary text-sm font-medium mb-2">Position</p>
+                <p className="text-muted-foreground text-sm">
+                  Details coming soon
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Our Values */}
       <section className="py-20 lg:py-28">
         <div className="container-custom">
