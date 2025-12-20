@@ -28,7 +28,7 @@ const Logo = ({
           <span className="bg-clip-text text-transparent" style={{
         backgroundImage: 'linear-gradient(90deg, #0891b2 0%, #0d9488 100%)'
       }}>
-            C.H
+            CH
           </span>
           <span className="bg-clip-text text-transparent" style={{
         backgroundImage: 'linear-gradient(90deg, #0d9488 0%, #22c55e 100%)'
