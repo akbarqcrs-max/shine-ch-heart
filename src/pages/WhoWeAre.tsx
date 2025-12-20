@@ -5,6 +5,7 @@ import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg";
 import chMuhammadKoyaImg from "@/assets/ch-muhammad-koya.png";
 import advisoryBoard1 from "@/assets/advisory-board-1.jpg";
+import advisoryBoard2 from "@/assets/advisory-board-2.jpg";
 
 const advisoryBoard = [
   {
@@ -14,10 +15,10 @@ const advisoryBoard = [
     image: advisoryBoard1,
   },
   {
-    name: "Member 2",
-    role: "Position",
-    description: "Details coming soon",
-    image: null,
+    name: "PK Kunjalikutty",
+    role: "National General Secretary, Indian Union Muslim League",
+    description: "Indian politician and social worker, present MLA from Vengara Assembly Constituency in Kerala. Deputy Leader of opposition in Kerala Legislative Assembly.",
+    image: advisoryBoard2,
   },
   {
     name: "Member 3",
