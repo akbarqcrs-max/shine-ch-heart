@@ -33,7 +33,7 @@ const Logo = ({
           <span className="bg-clip-text text-transparent" style={{
         backgroundImage: 'linear-gradient(90deg, #0d9488 0%, #22c55e 100%)'
       }}>
-            ​ Center 
+            ​ CENTER 
           </span>
         </span>}
     </Link>;
