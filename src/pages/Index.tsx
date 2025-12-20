@@ -101,10 +101,10 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
               >
-                Caring for families with a{" "}
-                <span className="text-primary">community of support</span>
+                <span className="text-foreground">Caring for families with a </span>
+                <span className="text-gradient-primary">community of support</span>
               </motion.h1>
 
               <motion.p
@@ -223,8 +223,8 @@ const Index = () => {
               transition={{ delay: 0.1 }}
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             >
-              Everything you need for{" "}
-              <span className="text-primary">hope and healing</span>
+              <span className="text-foreground">Everything you need for </span>
+              <span className="text-gradient-primary">hope and healing</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
