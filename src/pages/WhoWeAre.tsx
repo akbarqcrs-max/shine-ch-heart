@@ -6,6 +6,7 @@ import whoWeAreImg from "@/assets/who-we-are.jpg";
 import chMuhammadKoyaImg from "@/assets/ch-muhammad-koya.png";
 import advisoryBoard1 from "@/assets/advisory-board-1.jpg";
 import advisoryBoard2 from "@/assets/advisory-board-2.jpg";
+import advisoryBoard3 from "@/assets/advisory-board-3.jpg";
 
 const advisoryBoard = [
   {
@@ -21,10 +22,10 @@ const advisoryBoard = [
     image: advisoryBoard2,
   },
   {
-    name: "Member 3",
-    role: "Position",
-    description: "Details coming soon",
-    image: null,
+    name: "ET Muhammed Basheer",
+    role: "National Organising Secretary, Indian Union Muslim League",
+    description: "Indian politician and social worker who serves as the Member of Parliament from Ponnani Parliament Constituency of the Indian state Kerala.",
+    image: advisoryBoard3,
   },
   {
     name: "Member 4",
