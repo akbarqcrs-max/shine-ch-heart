@@ -46,9 +46,9 @@ const ServiceCard = ({ title, description, icon: Icon, image, href, index = 0 }:
           <p className="text-muted-foreground text-sm leading-relaxed mb-4">
             {description}
           </p>
-          <div className="flex items-center gap-2 text-primary font-medium text-sm">
-            <span>Learn more</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <div className="flex items-center gap-2 font-medium text-sm">
+            <span className="text-gradient-primary">Learn more</span>
+            <ArrowRight className="w-4 h-4 text-[#22c55e] transition-transform group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
