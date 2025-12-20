@@ -274,21 +274,26 @@ const WhoWeAre = () => {
               className="relative flex justify-center"
             >
               <div className="relative">
-                {/* Gradient background circle */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-full blur-2xl scale-110" />
-                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full" />
+                {/* Elegant frame background */}
+                <div className="absolute -inset-6 bg-gradient-to-br from-amber-600/40 via-amber-700/30 to-amber-800/40 rounded-3xl blur-xl" />
+                <div className="absolute -inset-3 bg-gradient-to-t from-amber-900/50 to-amber-600/30 rounded-2xl" />
                 
-                {/* Image container */}
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-primary/10 to-primary/5 border border-primary/20 shadow-2xl shadow-primary/10">
+                {/* Image container with warm elegant background */}
+                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-amber-100 via-amber-50 to-amber-200 border-2 border-amber-600/30 shadow-2xl">
+                  {/* Inner decorative border */}
+                  <div className="absolute inset-2 border border-amber-600/20 rounded-xl pointer-events-none" />
                   <img
                     src={chMuhammadKoyaImg}
                     alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
-                    className="w-full h-full object-contain object-top p-4"
+                    className="w-full h-full object-contain object-top p-2"
                   />
                 </div>
                 
-                {/* Decorative accent */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-xl" />
+                {/* Corner accents */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-amber-600/50 rounded-tl-lg" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-amber-600/50 rounded-tr-lg" />
+                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-amber-600/50 rounded-bl-lg" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-amber-600/50 rounded-br-lg" />
               </div>
             </motion.div>
 
