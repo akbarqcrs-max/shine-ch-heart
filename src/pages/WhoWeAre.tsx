@@ -34,6 +34,15 @@ const team = [
   { name: "Ahmed Khan", role: "Community Outreach", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" },
 ];
 
+const journeyMilestones = [
+  { year: "2009", description: "CH Center established in Dubai, UAE with a vision to support cancer patients and their families." },
+  { year: "2012", description: "Launched comprehensive patient support programs and expanded community outreach initiatives." },
+  { year: "2015", description: "Opened new facilities and introduced specialized counseling services for families." },
+  { year: "2018", description: "Received Excellence in Healthcare Support Award for outstanding community service." },
+  { year: "2021", description: "Expanded digital services and launched virtual support groups during the pandemic." },
+  { year: "2024", description: "Celebrating 15 years of hope, serving over 50,000 patients and families." },
+];
+
 const WhoWeAre = () => {
   return (
     <Layout>
@@ -90,8 +99,95 @@ const WhoWeAre = () => {
         </div>
       </section>
 
+      {/* Our Journey Timeline Section */}
+      <section className="py-20 lg:py-28 bg-section-alt overflow-hidden">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-3xl md:text-4xl font-bold mb-4"
+            >
+              <span className="text-gradient-heading">Our Journey</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground text-lg"
+            >
+              Building hope and support since 2009
+            </motion.p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical Line */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2 origin-top hidden md:block"
+            />
+
+            <div className="space-y-12 md:space-y-0">
+              {journeyMilestones.map((milestone, index) => (
+                <motion.div
+                  key={milestone.year}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className={`relative md:flex items-center ${
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Content Card */}
+                  <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                    <motion.div
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-background rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl transition-shadow cursor-pointer group"
+                    >
+                      <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2">
+                        <span className="text-gradient-primary">{milestone.year}</span>
+                      </h3>
+                      <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+                        {milestone.description}
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Timeline Dot */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.15 + 0.2 }}
+                    className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center"
+                  >
+                    <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg" />
+                    <motion.div
+                      animate={{ scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                      className="absolute w-4 h-4 rounded-full bg-primary/30"
+                    />
+                  </motion.div>
+
+                  {/* Empty space for opposite side */}
+                  <div className="md:w-1/2 hidden md:block" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Our Story Section */}
-      <section className="py-20 bg-section-alt">
+      <section className="py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <motion.span
@@ -108,7 +204,7 @@ const WhoWeAre = () => {
               viewport={{ once: true }}
               className="font-heading text-3xl md:text-4xl font-bold mb-6"
             >
-              Founded on Hope, Built on Compassion
+              <span className="text-gradient-heading">Founded on Hope, Built on Compassion</span>
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
