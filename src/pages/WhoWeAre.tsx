@@ -274,53 +274,60 @@ const WhoWeAre = () => {
               className="relative flex justify-center"
             >
               <motion.div 
-                className="relative group cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative group"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               >
-                {/* Teal to green gradient glow background with pulse animation */}
+                {/* Floating orbs effect */}
                 <motion.div 
-                  className="absolute -inset-6 bg-gradient-to-br from-teal-500/50 via-emerald-500/40 to-green-500/50 rounded-3xl blur-xl"
+                  className="absolute -top-8 -left-8 w-20 h-20 bg-gradient-to-br from-teal-400/60 to-emerald-500/40 rounded-full blur-2xl"
                   animate={{ 
-                    scale: [1, 1.05, 1],
-                    opacity: [0.7, 1, 0.7]
+                    x: [0, 15, 0],
+                    y: [0, -10, 0],
+                    scale: [1, 1.2, 1]
                   }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div 
-                  className="absolute -inset-3 bg-gradient-to-tr from-teal-600/40 to-green-600/40 rounded-2xl"
+                  className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-tr from-green-400/50 to-teal-500/30 rounded-full blur-2xl"
                   animate={{ 
-                    scale: [1, 1.03, 1],
-                    opacity: [0.6, 0.9, 0.6]
+                    x: [0, -12, 0],
+                    y: [0, 8, 0],
+                    scale: [1, 1.15, 1]
                   }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
+                <motion.div 
+                  className="absolute top-1/2 -right-10 w-16 h-16 bg-gradient-to-bl from-emerald-400/50 to-green-600/30 rounded-full blur-xl"
+                  animate={{ 
+                    x: [0, -8, 0],
+                    scale: [1, 1.1, 1]
                   }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 />
                 
-                {/* Image container with teal-green gradient */}
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-teal-50 via-emerald-50 to-green-100 border-2 border-teal-500/40 shadow-2xl shadow-teal-500/20 transition-all duration-300 group-hover:border-teal-400/60 group-hover:shadow-teal-400/30">
-                  {/* Inner decorative border */}
-                  <div className="absolute inset-2 border border-gradient-to-b from-teal-500/30 to-green-500/30 rounded-xl pointer-events-none transition-all duration-300 group-hover:border-teal-400/40" />
-                  <img
-                    src={chMuhammadKoyaImg}
-                    alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
-                    className="w-full h-full object-contain object-top p-2 transition-transform duration-500 group-hover:scale-105"
+                {/* Main image with clean circular crop and glow */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/30 to-green-500/30 rounded-full blur-xl scale-110" />
+                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl shadow-teal-500/30 bg-gradient-to-br from-white via-teal-50 to-green-50">
+                    <img
+                      src={chMuhammadKoyaImg}
+                      alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
+                      className="w-full h-full object-cover object-top scale-110 transition-transform duration-500 group-hover:scale-115"
+                    />
+                  </div>
+                  
+                  {/* Subtle ring effect */}
+                  <motion.div 
+                    className="absolute inset-0 rounded-full border-2 border-teal-400/30"
+                    animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0, 0.5] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
                   />
                 </div>
-                
-                {/* Corner accents with teal-green theme */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-teal-500/60 rounded-tl-lg transition-colors duration-300 group-hover:border-teal-400" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-green-500/60 rounded-tr-lg transition-colors duration-300 group-hover:border-green-400" />
-                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-green-500/60 rounded-bl-lg transition-colors duration-300 group-hover:border-green-400" />
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-teal-500/60 rounded-br-lg transition-colors duration-300 group-hover:border-teal-400" />
               </motion.div>
             </motion.div>
 
