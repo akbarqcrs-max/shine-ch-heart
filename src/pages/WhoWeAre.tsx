@@ -54,10 +54,10 @@ const WhoWeAre = () => {
         image={whoWeAreImg}
       />
 
-      {/* Mission & Vision Section */}
+      {/* Mission, Vision & Core Values Section */}
       <section className="py-20 lg:py-28">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Mission */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -94,6 +94,26 @@ const WhoWeAre = () => {
                 essential services, and the support they need. With our new C.H. Centre near 
                 Thrissur Medical College, we envision providing accommodation and facilities 
                 for cancer patients and their caregivers coming for treatment.
+              </p>
+            </motion.div>
+
+            {/* Core Values */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-section-alt rounded-2xl p-8 lg:p-10"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <Heart className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="font-heading text-2xl font-bold mb-4">Core Values</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Compassion, community, excellence, and integrity guide everything we do. 
+                We approach every individual with empathy and genuine care, building a supportive 
+                network where no one faces hardship alone, committed to the highest quality 
+                of service with transparency and accountability.
               </p>
             </motion.div>
           </div>
