@@ -10,13 +10,24 @@ import {
   CheckCircle,
   Globe,
   Lightbulb,
-  Megaphone
+  Megaphone,
+  Ambulance,
+  Cross,
+  UtensilsCrossed,
+  Moon,
+  HandHeart
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import FeatureCard from "@/components/cards/FeatureCard";
 import { Button } from "@/components/ui/button";
 import whatWeDoImg from "@/assets/what-we-do.jpg";
+import serviceMedical from "@/assets/service-medical.jpg";
+import serviceAmbulance from "@/assets/service-ambulance.jpg";
+import serviceFuneral from "@/assets/service-funeral.jpg";
+import serviceIftar from "@/assets/service-iftar.jpg";
+import serviceEid from "@/assets/service-eid.jpg";
+import serviceVolunteering from "@/assets/service-volunteering.jpg";
 
 const mainServices = [
   {
@@ -90,6 +101,51 @@ const memberBenefits = [
   "Free access to educational materials",
 ];
 
+const communityServices = [
+  {
+    title: "Medical Assistance",
+    description: "Comprehensive medical support including consultations, medications, and treatment coordination for those in need.",
+    image: serviceMedical,
+    icon: Stethoscope,
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    title: "Ambulance Services",
+    description: "24/7 emergency ambulance services ensuring swift medical transportation when every second counts.",
+    image: serviceAmbulance,
+    icon: Ambulance,
+    color: "from-red-500 to-orange-500",
+  },
+  {
+    title: "Funeral Services",
+    description: "Dignified funeral arrangements and support for families during their most difficult times.",
+    image: serviceFuneral,
+    icon: Cross,
+    color: "from-purple-500 to-indigo-500",
+  },
+  {
+    title: "Iftar Meal",
+    description: "Providing nutritious Iftar meals during Ramadan to those fasting, fostering community spirit.",
+    image: serviceIftar,
+    icon: Moon,
+    color: "from-amber-500 to-yellow-500",
+  },
+  {
+    title: "Eid Meal",
+    description: "Celebrating Eid with festive meals for families, ensuring everyone can partake in the joy.",
+    image: serviceEid,
+    icon: UtensilsCrossed,
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    title: "Volunteering",
+    description: "Join our community of dedicated volunteers making a real difference in people's lives.",
+    image: serviceVolunteering,
+    icon: HandHeart,
+    color: "from-pink-500 to-rose-500",
+  },
+];
+
 const WhatWeDo = () => {
   return (
     <Layout>
@@ -106,6 +162,87 @@ const WhatWeDo = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {mainServices.map((service, index) => (
               <FeatureCard key={service.title} {...service} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community Services Section */}
+      <section className="py-20 lg:py-28">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+            >
+              Community Services
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-3xl md:text-4xl font-bold mb-4"
+            >
+              How We Serve Our Community
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
+              From medical emergencies to community celebrations, we're here to support you every step of the way.
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {communityServices.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                {/* Image Container */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-40 group-hover:opacity-60 transition-opacity duration-300`} />
+                  
+                  {/* Icon Badge */}
+                  <div className={`absolute top-4 right-4 w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  
+                  {/* Learn More Link */}
+                  <div className="flex items-center gap-2 text-primary font-medium text-sm group/link cursor-pointer">
+                    <span className="group-hover/link:underline">Learn More</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </div>
+
+                {/* Bottom Gradient Border */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
+              </motion.div>
             ))}
           </div>
         </div>
