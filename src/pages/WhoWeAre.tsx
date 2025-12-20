@@ -313,51 +313,36 @@ const WhoWeAre = () => {
                   ease: "easeInOut"
                 }}
               >
-                {/* Soft floating orbs effect - mint/cyan tones */}
+                {/* Soft floating glow effects */}
                 <motion.div 
-                  className="absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br from-cyan-300/40 to-teal-200/30 rounded-full blur-3xl"
+                  className="absolute -top-8 -left-8 w-40 h-40 bg-gradient-to-br from-cyan-300/30 to-teal-200/20 rounded-3xl blur-3xl"
                   animate={{ 
                     x: [0, 15, 0],
                     y: [0, -10, 0],
-                    scale: [1, 1.15, 1]
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div 
-                  className="absolute -bottom-10 -right-10 w-36 h-36 bg-gradient-to-tr from-teal-200/40 to-cyan-300/30 rounded-full blur-3xl"
+                  className="absolute -bottom-8 -right-8 w-44 h-44 bg-gradient-to-tr from-teal-200/30 to-cyan-300/20 rounded-3xl blur-3xl"
                   animate={{ 
                     x: [0, -12, 0],
                     y: [0, 8, 0],
-                    scale: [1, 1.1, 1]
+                    scale: [1, 1.05, 1]
                   }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 />
-                <motion.div 
-                  className="absolute top-1/3 -left-16 w-24 h-24 bg-gradient-to-bl from-green-200/30 to-cyan-200/20 rounded-full blur-2xl"
-                  animate={{ 
-                    y: [0, -8, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                />
                 
-                {/* Main image with clean circular crop */}
+                {/* Main image with full rectangular view */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-2xl scale-125" />
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-[3px] border-cyan-400/50 shadow-xl shadow-cyan-200/30 bg-gradient-to-br from-white via-cyan-50 to-teal-50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/15 to-teal-200/15 rounded-2xl blur-2xl scale-110" />
+                  <div className="relative w-64 md:w-80 rounded-2xl overflow-hidden border-[3px] border-cyan-400/40 shadow-xl shadow-cyan-200/30 bg-gradient-to-br from-white via-cyan-50 to-teal-50">
                     <img
                       src={chMuhammadKoyaImg}
                       alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
-                      className="w-full h-full object-cover object-top scale-110 transition-transform duration-500 group-hover:scale-115"
+                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  
-                  {/* Subtle ring effect */}
-                  <motion.div 
-                    className="absolute inset-0 rounded-full border-2 border-cyan-300/40"
-                    animate={{ scale: [1, 1.06, 1], opacity: [0.4, 0, 0.4] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
-                  />
                 </div>
               </motion.div>
             </motion.div>
