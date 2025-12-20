@@ -49,9 +49,9 @@ const PageHeader = ({ title, description, breadcrumbs, image, children }: PageHe
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-heading text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6"
+              className="font-heading text-4xl lg:text-5xl xl:text-6xl font-bold mb-6"
             >
-              {title}
+              <span className="text-gradient-heading">{title}</span>
             </motion.h1>
 
             {description && (
