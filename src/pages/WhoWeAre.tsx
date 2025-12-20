@@ -430,29 +430,30 @@ const WhoWeAre = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-background rounded-2xl p-6 text-center shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
+                className="bg-background rounded-2xl overflow-hidden shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
               >
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full" />
-                  <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-primary/20">
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <Users className="w-12 h-12 text-muted-foreground/50" />
-                    )}
-                  </div>
+                <div className="relative w-full aspect-[4/5] bg-muted">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                      <Users className="w-16 h-16 text-muted-foreground/30" />
+                    </div>
+                  )}
                 </div>
-                <h3 className="font-heading text-lg font-bold mb-1 group-hover:text-primary transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
-                <p className="text-muted-foreground text-sm">
-                  {member.description}
-                </p>
+                <div className="p-6 text-center">
+                  <h3 className="font-heading text-lg font-bold mb-1 group-hover:text-primary transition-colors">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {member.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
