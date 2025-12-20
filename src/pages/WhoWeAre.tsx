@@ -323,10 +323,6 @@ const WhoWeAre = () => {
                   durable impression upon people he meets; a second is to have handled matters in 
                   such a manner that the course of events is continually influenced by what he did."
                 </p>
-                <p className="mt-4 text-foreground font-medium pl-8">
-                  Judged by these yardsticks, C.H. Mohammed Koya Sahib was truly one of the most 
-                  outstanding personalities in the history of modern Kerala.
-                </p>
               </div>
             </motion.div>
           </div>
