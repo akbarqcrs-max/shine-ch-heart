@@ -7,6 +7,7 @@ import chMuhammadKoyaImg from "@/assets/ch-muhammad-koya.png";
 import advisoryBoard1 from "@/assets/advisory-board-1.jpg";
 import advisoryBoard2 from "@/assets/advisory-board-2.jpg";
 import advisoryBoard3 from "@/assets/advisory-board-3.jpg";
+import advisoryBoard4 from "@/assets/advisory-board-4.jpg";
 
 const advisoryBoard = [
   {
@@ -28,10 +29,10 @@ const advisoryBoard = [
     image: advisoryBoard3,
   },
   {
-    name: "Member 4",
-    role: "Position",
-    description: "Details coming soon",
-    image: null,
+    name: "Dr. MK Muneer",
+    role: "State Secretary, Indian Union Muslim League",
+    description: "Indian politician, physician, social worker, singer, poet and author from Kerala. Son of CH Muhammed Koya.",
+    image: advisoryBoard4,
   },
 ];
 
