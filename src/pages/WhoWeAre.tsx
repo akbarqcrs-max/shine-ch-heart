@@ -4,6 +4,34 @@ import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg";
 import chMuhammadKoyaImg from "@/assets/ch-muhammad-koya.png";
+import advisoryBoard1 from "@/assets/advisory-board-1.jpg";
+
+const advisoryBoard = [
+  {
+    name: "Syed Sadiq Ali Shihab Thangal",
+    role: "President, Indian Union Muslim League",
+    description: "Community leader and politician from Kerala. He currently serves as the Kerala State President, Indian Union Muslim League, and chancellor of Darul Huda Islamic University.",
+    image: advisoryBoard1,
+  },
+  {
+    name: "Member 2",
+    role: "Position",
+    description: "Details coming soon",
+    image: null,
+  },
+  {
+    name: "Member 3",
+    role: "Position",
+    description: "Details coming soon",
+    image: null,
+  },
+  {
+    name: "Member 4",
+    role: "Position",
+    description: "Details coming soon",
+    image: null,
+  },
+];
 
 const values = [
   {
@@ -395,8 +423,7 @@ const WhoWeAre = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Placeholder cards for 4 advisory board members */}
-            {[1, 2, 3, 4].map((index) => (
+            {advisoryBoard.map((member, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -408,15 +435,23 @@ const WhoWeAre = () => {
                 <div className="relative w-32 h-32 mx-auto mb-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full" />
                   <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-primary/20">
-                    <Users className="w-12 h-12 text-muted-foreground/50" />
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Users className="w-12 h-12 text-muted-foreground/50" />
+                    )}
                   </div>
                 </div>
                 <h3 className="font-heading text-lg font-bold mb-1 group-hover:text-primary transition-colors">
-                  Member {index}
+                  {member.name}
                 </h3>
-                <p className="text-primary text-sm font-medium mb-2">Position</p>
+                <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
                 <p className="text-muted-foreground text-sm">
-                  Details coming soon
+                  {member.description}
                 </p>
               </motion.div>
             ))}
