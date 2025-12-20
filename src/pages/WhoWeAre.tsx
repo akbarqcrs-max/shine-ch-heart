@@ -359,7 +359,7 @@ const WhoWeAre = () => {
                 In Loving Memory
               </span>
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-                <span className="text-gradient-heading">About C.H. Muhammad Koya Sahib</span>
+                <span className="text-gradient-heading">C.H. Muhammad Koya Sahib</span>
               </h2>
               <p className="text-primary font-medium text-lg mb-6">
                 Ex-Chief Minister of Kerala | Served as Home Minister and Education Minister
