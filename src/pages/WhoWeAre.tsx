@@ -282,38 +282,38 @@ const WhoWeAre = () => {
                   ease: "easeInOut"
                 }}
               >
-                {/* Floating orbs effect */}
+                {/* Soft floating orbs effect - mint/cyan tones */}
                 <motion.div 
-                  className="absolute -top-8 -left-8 w-20 h-20 bg-gradient-to-br from-teal-400/60 to-emerald-500/40 rounded-full blur-2xl"
+                  className="absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br from-cyan-300/40 to-teal-200/30 rounded-full blur-3xl"
                   animate={{ 
                     x: [0, 15, 0],
                     y: [0, -10, 0],
-                    scale: [1, 1.2, 1]
+                    scale: [1, 1.15, 1]
                   }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div 
-                  className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-tr from-green-400/50 to-teal-500/30 rounded-full blur-2xl"
+                  className="absolute -bottom-10 -right-10 w-36 h-36 bg-gradient-to-tr from-teal-200/40 to-cyan-300/30 rounded-full blur-3xl"
                   animate={{ 
                     x: [0, -12, 0],
                     y: [0, 8, 0],
-                    scale: [1, 1.15, 1]
-                  }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                />
-                <motion.div 
-                  className="absolute top-1/2 -right-10 w-16 h-16 bg-gradient-to-bl from-emerald-400/50 to-green-600/30 rounded-full blur-xl"
-                  animate={{ 
-                    x: [0, -8, 0],
                     scale: [1, 1.1, 1]
                   }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
+                <motion.div 
+                  className="absolute top-1/3 -left-16 w-24 h-24 bg-gradient-to-bl from-green-200/30 to-cyan-200/20 rounded-full blur-2xl"
+                  animate={{ 
+                    y: [0, -8, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 />
                 
-                {/* Main image with clean circular crop and glow */}
+                {/* Main image with clean circular crop */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/30 to-green-500/30 rounded-full blur-xl scale-110" />
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl shadow-teal-500/30 bg-gradient-to-br from-white via-teal-50 to-green-50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-2xl scale-125" />
+                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-[3px] border-cyan-400/50 shadow-xl shadow-cyan-200/30 bg-gradient-to-br from-white via-cyan-50 to-teal-50">
                     <img
                       src={chMuhammadKoyaImg}
                       alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
@@ -323,9 +323,9 @@ const WhoWeAre = () => {
                   
                   {/* Subtle ring effect */}
                   <motion.div 
-                    className="absolute inset-0 rounded-full border-2 border-teal-400/30"
-                    animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0, 0.5] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute inset-0 rounded-full border-2 border-cyan-300/40"
+                    animate={{ scale: [1, 1.06, 1], opacity: [0.4, 0, 0.4] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
                   />
                 </div>
               </motion.div>
