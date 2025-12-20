@@ -244,6 +244,11 @@
 }
 
 @layer utilities {
+  /* Two-tone gradient background for buttons */
+  .bg-gradient-primary {
+    background-image: linear-gradient(90deg, #0891b2 0%, #0d9488 50%, #22c55e 100%);
+  }
+
   /* Two-tone gradient text like IVOS logo */
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
