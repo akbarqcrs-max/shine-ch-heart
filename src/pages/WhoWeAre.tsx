@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { Target, Eye, Heart, Users, Award, Briefcase } from "lucide-react";
+import { Target, Eye, Heart, Users, Award, Briefcase, Quote } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg";
+import chMuhammadKoyaImg from "@/assets/ch-muhammad-koya.png";
 
 const values = [
   {
@@ -249,6 +250,79 @@ const WhoWeAre = () => {
                 Medical College, aimed at providing accommodation and other essential facilities 
                 for cancer patients and their caregivers coming for treatment.
               </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* About CH Muhammad Koya Sahib Section */}
+      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary/5 via-background to-primary/10 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        </div>
+        
+        <div className="container-custom relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image with styled background */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative flex justify-center"
+            >
+              <div className="relative">
+                {/* Gradient background circle */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-full blur-2xl scale-110" />
+                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full" />
+                
+                {/* Image container */}
+                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-b from-primary/10 to-primary/5 border border-primary/20 shadow-2xl shadow-primary/10">
+                  <img
+                    src={chMuhammadKoyaImg}
+                    alt="C.H. Muhammad Koya Sahib - Ex-Chief Minister of Kerala"
+                    className="w-full h-full object-contain object-top p-4"
+                  />
+                </div>
+                
+                {/* Decorative accent */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-xl" />
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center lg:text-left"
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                In Loving Memory
+              </span>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-gradient-heading">About C.H. Muhammad Koya Sahib</span>
+              </h2>
+              <p className="text-primary font-medium text-lg mb-6">
+                Ex-Chief Minister of Kerala | Served as Home Minister and Education Minister
+              </p>
+              
+              {/* Quote */}
+              <div className="relative bg-section-alt rounded-2xl p-6 md:p-8 border border-border/50">
+                <Quote className="w-8 h-8 text-primary/30 absolute top-4 left-4" />
+                <p className="text-muted-foreground leading-relaxed italic pl-8">
+                  "One unmistakable mark of a Great Man," it has been said, "is the power of making 
+                  durable impression upon people he meets; a second is to have handled matters in 
+                  such a manner that the course of events is continually influenced by what he did."
+                </p>
+                <p className="mt-4 text-foreground font-medium pl-8">
+                  Judged by these yardsticks, C.H. Mohammed Koya Sahib was truly one of the most 
+                  outstanding personalities in the history of modern Kerala.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
