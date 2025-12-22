@@ -38,7 +38,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* About */}
           <div className="space-y-6">
-            <Logo />
+            <div className="inline-block bg-white p-2 rounded-lg">
+              <Logo />
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Caring for families with a community of support. When someone faces cancer, family stays. And we stay with them.
             </p>
