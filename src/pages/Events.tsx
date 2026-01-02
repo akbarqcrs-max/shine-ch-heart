@@ -193,7 +193,7 @@ const events = [
 തൃശ്ശൂർ സി എച്ച് സെന്റർ
 
 https://www.facebook.com/share/p/17yJZgvLbR/`,
-    image: thrissurEvent2,
+    image: thrissurEvent7,
     gallery: [
       thrissurEvent1, thrissurEvent2, thrissurEvent3, thrissurEvent4, thrissurEvent5,
       thrissurEvent6, thrissurEvent7, thrissurEvent8, thrissurEvent9, thrissurEvent10,
