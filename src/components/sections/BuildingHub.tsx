@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import chCenterNightView from "@/assets/ch-center-night-view.jpg";
 import chCenterInteriorRoom from "@/assets/ch-center-interior-room.png";
 import chCenterExterior2 from "@/assets/ch-center-exterior-2.jpg";
+import chCenterExteriorMain from "@/assets/ch-center-exterior-main.jpg";
 
 // Using placeholder images for now, can be replaced with actual building photos
 const buildingImages = {
@@ -19,7 +20,8 @@ const buildingImages = {
         "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=800&h=600&fit=crop", // Window view
     ],
     exterior: [
-        chCenterNightView, // Main exterior photo (night view)
+        chCenterExteriorMain, // New main exterior photo
+        chCenterNightView, // Night view (moved to second)
         chCenterExterior2, // Side view with lighting
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop", // Glass facade
         "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&h=600&fit=crop", // Garden area
@@ -39,7 +41,7 @@ const buildingImages = {
 };
 
 const tabs = [
-    { id: "exterior", label: "EXTERIOR", count: 4 },
+    { id: "exterior", label: "EXTERIOR", count: 5 },
     { id: "interior", label: "INTERIOR", count: 7 },
     { id: "playrooms", label: "PLAYROOMS", count: 2 },
     { id: "dining", label: "DINING AREAS", count: 2 },
