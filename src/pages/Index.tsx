@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  Users, 
-  HandHeart, 
-  BookOpen, 
-  Sparkles, 
-  Newspaper, 
+import {
+  Heart,
+  Users,
+  HandHeart,
+  BookOpen,
+  Sparkles,
+  Newspaper,
   MessageCircle,
   Phone,
   ArrowRight,
@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import ServiceCard from "@/components/cards/ServiceCard";
+import BuildingHub from "@/components/sections/BuildingHub";
 
 // Import images
 import heroImage from "@/assets/hero-image.jpg";
@@ -113,8 +114,8 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg text-muted-foreground leading-relaxed max-w-xl"
               >
-                When someone faces cancer, family stays. And we stay with them. 
-                CH Center provides comprehensive support, care, and hope to those 
+                When someone faces cancer, family stays. And we stay with them.
+                CH Center provides comprehensive support, care, and hope to those
                 affected by cancer.
               </motion.p>
 
@@ -168,7 +169,7 @@ const Index = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 {/* Decorative elements */}
                 <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-3xl -z-10" />
                 <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent rounded-2xl -z-10" />
@@ -203,6 +204,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Building Details Section */}
+      <BuildingHub />
+
       {/* Services Section */}
       <section className="py-20 lg:py-28">
         <div className="container-custom">
@@ -233,7 +237,7 @@ const Index = () => {
               transition={{ delay: 0.2 }}
               className="text-muted-foreground text-lg"
             >
-              Comprehensive support services designed to help patients and families 
+              Comprehensive support services designed to help patients and families
               navigate their cancer journey with dignity and hope.
             </motion.p>
           </div>
@@ -246,6 +250,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* CTA Section */}
       <section className="py-20 bg-primary">
@@ -266,7 +272,7 @@ const Index = () => {
               transition={{ delay: 0.1 }}
               className="text-primary-foreground/90 text-lg mb-8"
             >
-              Your support can change lives. Whether through donations, volunteering, 
+              Your support can change lives. Whether through donations, volunteering,
               or spreading awareness, every contribution matters.
             </motion.p>
             <motion.div
@@ -287,8 +293,8 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
-      </section>
-    </Layout>
+      </section >
+    </Layout >
   );
 };
 
