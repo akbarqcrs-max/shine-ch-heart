@@ -245,7 +245,7 @@ const Index = () => {
 
       {/* Stories of Hope Section */}
       <section className="py-20 bg-section-alt lg:py-[3px]">
-        <div className="container-custom">
+        <div className="container-custom py-[20px]">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span initial={{
