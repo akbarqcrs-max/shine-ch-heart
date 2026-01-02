@@ -338,7 +338,7 @@ const Index = () => {
       </section>
 
       {/* Risk, Prevention and Screening Section */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-[55px]">
         <div className="container-custom">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
