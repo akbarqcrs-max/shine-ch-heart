@@ -5,12 +5,22 @@ import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import EventsCalendar from "@/components/EventsCalendar";
 import eventAwarenessWalk from "@/assets/event-awareness-walk.jpg";
 import eventIftarGathering from "@/assets/event-iftar-gathering.jpg";
 import eventEidCelebration from "@/assets/event-eid-celebration.jpg";
 import eventFundraisingGala from "@/assets/event-fundraising-gala.jpg";
 import eventFoodDistribution from "@/assets/event-food-distribution.jpg";
+
+const regions = [
+  { value: "all", label: "All Regions" },
+  { value: "north", label: "North Region" },
+  { value: "south", label: "South Region" },
+  { value: "east", label: "East Region" },
+  { value: "west", label: "West Region" },
+  { value: "central", label: "Central Region" },
+];
 const events = [
   {
     title: "Cancer Awareness Walk",
@@ -20,6 +30,7 @@ const events = [
     time: "7:00 AM - 11:00 AM",
     location: "City Park, Main Entrance",
     category: "Awareness",
+    region: "north",
   },
   {
     title: "Community Iftar Gathering",
@@ -29,6 +40,7 @@ const events = [
     time: "6:30 PM - 9:00 PM",
     location: "Community Center Hall",
     category: "Community",
+    region: "central",
   },
   {
     title: "Eid Celebration",
@@ -38,6 +50,7 @@ const events = [
     time: "10:00 AM - 4:00 PM",
     location: "Grand Celebration Grounds",
     category: "Celebration",
+    region: "south",
   },
   {
     title: "Fundraising Gala",
@@ -47,6 +60,7 @@ const events = [
     time: "7:00 PM - 11:00 PM",
     location: "Royal Banquet Hall",
     category: "Fundraising",
+    region: "east",
   },
   {
     title: "Food Distribution Drive",
@@ -56,11 +70,17 @@ const events = [
     time: "9:00 AM - 1:00 PM",
     location: "Various Locations",
     category: "Outreach",
+    region: "west",
   },
 ];
 
 const Events = () => {
   const [viewMode, setViewMode] = useState<"grid" | "calendar">("grid");
+  const [selectedRegion, setSelectedRegion] = useState("all");
+
+  const filteredEvents = selectedRegion === "all" 
+    ? events 
+    : events.filter(event => event.region === selectedRegion);
 
   return (
     <Layout>
@@ -90,9 +110,25 @@ const Events = () => {
             </p>
           </motion.div>
 
-          {/* View Toggle */}
-          <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as "grid" | "calendar")} className="w-full">
-            <div className="flex justify-center mb-8">
+          {/* Filters and View Toggle */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary" />
+              <Select value={selectedRegion} onValueChange={setSelectedRegion}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Region" />
+                </SelectTrigger>
+                <SelectContent>
+                  {regions.map((region) => (
+                    <SelectItem key={region.value} value={region.value}>
+                      {region.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as "grid" | "calendar")} className="w-auto">
               <TabsList>
                 <TabsTrigger value="grid" className="gap-2">
                   <Grid3X3 className="w-4 h-4" />
@@ -103,12 +139,20 @@ const Events = () => {
                   Calendar View
                 </TabsTrigger>
               </TabsList>
-            </div>
+            </Tabs>
+          </div>
+
+          <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as "grid" | "calendar")} className="w-full">
 
             {/* Grid View */}
             <TabsContent value="grid">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {events.map((event, index) => (
+                {filteredEvents.length === 0 && (
+                  <div className="col-span-full text-center py-12 text-muted-foreground">
+                    No events found in this region.
+                  </div>
+                )}
+                {filteredEvents.map((event, index) => (
                   <motion.div
                     key={event.title}
                     initial={{ opacity: 0, y: 30 }}
@@ -165,7 +209,7 @@ const Events = () => {
 
             {/* Calendar View */}
             <TabsContent value="calendar">
-              <EventsCalendar events={events} />
+              <EventsCalendar events={filteredEvents} />
             </TabsContent>
           </Tabs>
         </div>
