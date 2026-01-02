@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Who We Are", href: "/who-we-are" },
   { name: "What We Do", href: "/what-we-do" },
+  { name: "Events", href: "/events" },
   { name: "All About Cancer", href: "/about-cancer" },
   { name: "Stories of Hope", href: "/stories-of-hope" },
   { name: "News & Updates", href: "/news-updates" },
