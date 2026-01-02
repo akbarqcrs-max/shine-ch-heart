@@ -49,27 +49,6 @@ const services = [
     image: aboutCancerImg,
     href: "/about-cancer",
   },
-  {
-    title: "Stories of Hope",
-    description: "Read inspiring stories from cancer survivors and their families. Their journeys of courage and resilience will inspire you.",
-    icon: Sparkles,
-    image: storiesHopeImg,
-    href: "/stories-of-hope",
-  },
-  {
-    title: "News & Updates",
-    description: "Stay informed with the latest news, events, research breakthroughs, and updates from CH Center and the cancer community.",
-    icon: Newspaper,
-    image: newsUpdatesImg,
-    href: "/news-updates",
-  },
-  {
-    title: "Contact Us",
-    description: "Get in touch with our team. We're here to help, answer questions, and provide the support you need.",
-    icon: MessageCircle,
-    image: contactImg,
-    href: "/contact",
-  },
 ];
 
 const stats = [
@@ -246,6 +225,190 @@ const Index = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stories of Hope Section */}
+      <section className="py-20 lg:py-28 bg-section-alt">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+            >
+              Inspiration
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+            >
+              <span className="text-foreground">Stories of </span>
+              <span className="text-gradient-primary">Hope</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground text-lg"
+            >
+              Real stories from real people. Witness the strength, resilience, and courage of our community.
+            </motion.p>
+          </div>
+
+          {/* Stories Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Finding Light in Darkness",
+                desc: "Sarah's journey through treatment and how she found strength in community support.",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop"
+              },
+              {
+                title: "A Second Chance",
+                desc: "After a difficult diagnosis, Michael focused on what matters most: family and faith.",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=600&fit=crop"
+              },
+              {
+                title: "Stronger Together",
+                desc: "The Roberts family shares their experience of navigating care as a united front.",
+                image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop"
+              }
+            ].map((story, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl bg-background shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium mb-3">
+                      Survivor Story
+                    </span>
+                    <h3 className="font-heading text-xl font-bold text-white mb-2 line-clamp-2">
+                      {story.title}
+                    </h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-muted-foreground mb-6 line-clamp-3">
+                    {story.desc}
+                  </p>
+                  <Button variant="link" className="p-0 h-auto gap-2 group/btn">
+                    Read Full Story
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Risk, Prevention and Screening Section */}
+      <section className="py-20 lg:py-28">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+            >
+              Prevention
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+            >
+              <span className="text-foreground">Risk, Prevention </span>
+              <span className="text-gradient-primary">& Screening</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground text-lg"
+            >
+              Early detection saves lives. Learn about risk factors and the importance of regular screenings.
+            </motion.p>
+          </div>
+
+          {/* Risk & Prevention Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Cancer Screenings",
+                desc: "Regular screenings can detect cancer early when it's most treatable. Find out which screenings are right for you.",
+                image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
+                icon: CheckCircle
+              },
+              {
+                title: "Risk Factors",
+                desc: "Understand the genetic, environmental, and lifestyle factors that may increase your risk of developing cancer.",
+                image: "https://images.unsplash.com/photo-1576091160550-217358c7e618?w=800&h=600&fit=crop",
+                icon: Users
+              },
+              {
+                title: "Prevention Tips",
+                desc: "Simple lifestyle changes can make a big difference. Explore actionable tips for a healthier, cancer-free life.",
+                image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=800&h=600&fit=crop",
+                icon: Heart
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {item.desc}
+                  </p>
+                  <Button variant="link" className="p-0 h-auto gap-2 text-primary group-hover:text-primary/80">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
