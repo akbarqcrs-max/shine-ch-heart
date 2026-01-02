@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import WhoWeAre from "./pages/WhoWeAre";
 import WhatWeDo from "./pages/WhatWeDo";
+import Events from "./pages/Events";
 import AboutCancer from "./pages/AboutCancer";
 import StoriesOfHope from "./pages/StoriesOfHope";
 import NewsUpdates from "./pages/NewsUpdates";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/what-we-do" element={<WhatWeDo />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/about-cancer" element={<AboutCancer />} />
           <Route path="/stories-of-hope" element={<StoriesOfHope />} />
           <Route path="/news-updates" element={<NewsUpdates />} />
