@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Clock, ArrowRight, Grid3X3, CalendarDays } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import EventsCalendar from "@/components/EventsCalendar";
 import eventAwarenessWalk from "@/assets/event-awareness-walk.jpg";
 import eventIftarGathering from "@/assets/event-iftar-gathering.jpg";
 import eventEidCelebration from "@/assets/event-eid-celebration.jpg";
 import eventFundraisingGala from "@/assets/event-fundraising-gala.jpg";
 import eventFoodDistribution from "@/assets/event-food-distribution.jpg";
-
 const events = [
   {
     title: "Cancer Awareness Walk",
@@ -58,6 +60,8 @@ const events = [
 ];
 
 const Events = () => {
+  const [viewMode, setViewMode] = useState<"grid" | "calendar">("grid");
+
   return (
     <Layout>
       <PageHeader
@@ -66,14 +70,14 @@ const Events = () => {
         image={eventFundraisingGala}
       />
 
-      {/* Events Grid */}
+      {/* Events Section */}
       <section className="py-20 bg-background">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="text-primary font-semibold uppercase tracking-wider text-sm">
               Upcoming & Ongoing
@@ -81,65 +85,89 @@ const Events = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
               Our Events
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
               From awareness campaigns to community celebrations, our events bring people together for meaningful causes.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event, index) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                      {event.category}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {event.description}
-                  </p>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Calendar className="w-4 h-4 text-primary" />
-                      <span>{event.date}</span>
+          {/* View Toggle */}
+          <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as "grid" | "calendar")} className="w-full">
+            <div className="flex justify-center mb-8">
+              <TabsList>
+                <TabsTrigger value="grid" className="gap-2">
+                  <Grid3X3 className="w-4 h-4" />
+                  Grid View
+                </TabsTrigger>
+                <TabsTrigger value="calendar" className="gap-2">
+                  <CalendarDays className="w-4 h-4" />
+                  Calendar View
+                </TabsTrigger>
+              </TabsList>
+            </div>
+
+            {/* Grid View */}
+            <TabsContent value="grid">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {events.map((event, index) => (
+                  <motion.div
+                    key={event.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="relative h-56 overflow-hidden">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                          {event.category}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4 text-primary" />
-                      <span>{event.time}</span>
+                    
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                        {event.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                        {event.description}
+                      </p>
+                      
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Calendar className="w-4 h-4 text-primary" />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="w-4 h-4 text-primary" />
+                          <span>{event.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <MapPin className="w-4 h-4 text-primary" />
+                          <span>{event.location}</span>
+                        </div>
+                      </div>
+                      
+                      <Button variant="outline" className="w-full group/btn">
+                        Learn More
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="w-4 h-4 text-primary" />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-                  
-                  <Button variant="outline" className="w-full group/btn">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Calendar View */}
+            <TabsContent value="calendar">
+              <EventsCalendar events={events} />
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
