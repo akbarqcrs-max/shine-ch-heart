@@ -14,16 +14,16 @@ interface NewsCardProps {
   index?: number;
 }
 
-const NewsCard = ({ 
-  title, 
-  excerpt, 
-  image, 
-  date, 
-  category, 
+const NewsCard = ({
+  title,
+  excerpt,
+  image,
+  date,
+  category,
   readTime = "5 min read",
   href,
   featured = false,
-  index = 0 
+  index = 0
 }: NewsCardProps) => {
   if (featured) {
     return (
@@ -36,11 +36,11 @@ const NewsCard = ({
       >
         <Link to={href} className="block news-card h-full lg:grid lg:grid-cols-2 gap-0">
           {/* Image */}
-          <div className="relative h-64 lg:h-full overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
+          <div className="relative h-auto lg:h-auto overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-auto object-contain"
             />
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">

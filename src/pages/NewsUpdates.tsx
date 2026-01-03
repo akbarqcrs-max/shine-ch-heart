@@ -12,7 +12,7 @@ import story2 from "@/assets/story-2.jpg";
 import story3 from "@/assets/story-3.jpg";
 import story4 from "@/assets/story-4.jpg";
 import whatWeDoImg from "@/assets/what-we-do.jpg";
-import ambulanceHandoverImg from "@/assets/ambulance-handover-ceremony.jpg";
+import inaugurationImg from "@/assets/thrissur-ch-center-inauguration.jpg";
 
 const categories = [
   { id: "all", label: "All" },
@@ -23,13 +23,13 @@ const categories = [
 ];
 
 const featuredNews = {
-  title: "Hyderali Shihab Thangal Memorial Ambulance Fund Handover",
-  excerpt: "Fund Handover Ceremony for Hyderali Shihab Thangal Memorial Ambulance by Bahrain KMCC CH Center Chapter to Thrissur CH Center.",
-  image: ambulanceHandoverImg,
-  date: "December 30, 2025",
+  title: "Thrissur CH Center Inauguration",
+  excerpt: "The grand inauguration ceremony of the Thrissur CH Center will take place on February 14, 2026. Join us for this momentous occasion.",
+  image: inaugurationImg,
+  date: "February 14, 2026",
   category: "Events",
-  readTime: "3 min read",
-  href: "/news-updates/ambulance-handover",
+  readTime: "2 min read",
+  href: "/news-updates/inauguration",
 };
 
 const news = [

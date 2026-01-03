@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 interface PageHeaderProps {
   title: string;
-  description?: string;
+  description?: string | ReactNode;
   breadcrumbs?: { name: string; href?: string }[];
   image?: string;
   children?: ReactNode;
