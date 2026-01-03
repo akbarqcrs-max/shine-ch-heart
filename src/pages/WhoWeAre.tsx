@@ -84,6 +84,9 @@ const journeyMilestones = [{
 }, {
   year: "2025",
   description: "Continuing to expand facilities and services for cancer patients and their caregivers."
+}, {
+  year: "2026",
+  description: "Grand inauguration of the new C.H. Centre near Thrissur Medical College, expanding our capacity to serve."
 }];
 const WhoWeAre = () => {
   return <Layout>
