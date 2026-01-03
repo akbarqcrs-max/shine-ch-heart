@@ -341,58 +341,65 @@ const WhoWeAre = () => {
           </motion.p>
         </div>
 
-        {/* Auto-Animated Horizontal Marquee Timeline */}
-        <div className="relative overflow-hidden py-10">
-          {/* Background enhancement for the section */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-primary/20" />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical Line */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2 origin-top hidden md:block"
+          />
 
-          {/* Gradient masks for smooth fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-section-alt to-transparent z-20" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-section-alt to-transparent z-20" />
-
-          <motion.div className="flex gap-8 md:gap-16 min-w-max px-4" animate={{
-            x: ["0%", "-50%"]
-          }} transition={{
-            duration: 40,
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "loop"
-          }} whileHover={{
-            animationPlayState: "paused"
-          }}>
-            {[...journeyMilestones, ...journeyMilestones].map((milestone, index) => <div key={`${milestone.year}-${index}`} className="relative w-80 md:w-96 flex-shrink-0 group">
-              {/* Central Dot */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg relative cursor-pointer hover:scale-125 transition-transform">
-                  {/* Pulse effect */}
-                  <div className="absolute inset-0 w-full h-full rounded-full bg-primary/30 animate-ping opacity-50" />
+          <div className="space-y-12 md:space-y-0">
+            {journeyMilestones.map((milestone, index) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className={`relative md:flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+              >
+                {/* Content Card */}
+                <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                  <motion.div
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="bg-background rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl transition-shadow cursor-pointer group"
+                  >
+                    <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2">
+                      <span className="text-gradient-primary">{milestone.year}</span>
+                    </h3>
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      {milestone.description}
+                    </p>
+                  </motion.div>
                 </div>
-              </div>
 
-              {/* Connector Line */}
-              <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-primary/30
-                      ${index % 2 === 0 ? "bottom-1/2 h-16" : "top-1/2 h-16"}
-                    `} />
+                {/* Timeline Dot */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.15 + 0.2 }}
+                  className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center"
+                >
+                  <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg" />
+                  <motion.div
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                    className="absolute w-4 h-4 rounded-full bg-primary/30"
+                  />
+                </motion.div>
 
-              {/* Content Card */}
-              <div className={`relative
-                      ${index % 2 === 0 ? "mb-24" : "mt-24"}
-                    `}>
-                <div className="bg-background rounded-xl p-6 shadow-md border border-border/50 hover:shadow-xl transition-all hover:scale-105 cursor-pointer relative">
-                  {/* Year Badge */}
-                  <div className={`absolute left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-sm font-bold shadow-sm
-                        ${index % 2 === 0 ? "-bottom-3" : "-top-3"}
-                      `}>
-                    {milestone.year}
-                  </div>
-
-                  <p className="text-muted-foreground text-center text-sm leading-relaxed mt-2">
-                    {milestone.description}
-                  </p>
-                </div>
-              </div>
-            </div>)}
-          </motion.div>
+                {/* Empty space for opposite side */}
+                <div className="md:w-1/2 hidden md:block" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
