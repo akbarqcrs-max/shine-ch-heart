@@ -15,6 +15,7 @@ import storiesHopeImg from "@/assets/stories-hope.jpg";
 import newsUpdatesImg from "@/assets/news-updates.jpg";
 import contactImg from "@/assets/contact.jpg";
 import luluLogo from "@/assets/partners/lulu.png";
+import riskFactorsImg from "@/assets/risk-factors.jpg";
 const services = [{
   title: "Who We Are",
   description: "Learn about our mission, vision, and the dedicated team working tirelessly to support those affected by cancer.",
@@ -386,18 +387,18 @@ const Index = () => {
         {/* Risk & Prevention Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[{
-            title: "Cancer Screenings",
-            desc: "Regular screenings can detect cancer early when it's most treatable. Find out which screenings are right for you.",
+            title: "HPV Prevention ",
+            desc: "Human Papillomavirus can cause 6 types of cancer. But preventing it-and the cancers it causes-is simple.",
             image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
             icon: CheckCircle
           }, {
-            title: "Risk Factors",
-            desc: "Understand the genetic, environmental, and lifestyle factors that may increase your risk of developing cancer.",
-            image: "https://images.unsplash.com/photo-1576091160550-217358c7e618?w=800&h=600&fit=crop",
+            title: "Stay Away From Tobacco",
+            desc: "Let the Great American Smokeout event be your day to start your journey toward a smoke-free life.",
+            image: riskFactorsImg,
             icon: Users
           }, {
-            title: "Prevention Tips",
-            desc: "Simple lifestyle changes can make a big difference. Explore actionable tips for a healthier, cancer-free life.",
+            title: "Eat Healthy and Get Active",
+            desc: "Learn about the benefits of good nutrition, regular physical activity, and staying at a healthy weight.",
             image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=800&h=600&fit=crop",
             icon: Heart
           }].map((item, index) => <motion.div key={index} initial={{
