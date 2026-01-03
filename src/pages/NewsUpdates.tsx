@@ -12,6 +12,7 @@ import story2 from "@/assets/story-2.jpg";
 import story3 from "@/assets/story-3.jpg";
 import story4 from "@/assets/story-4.jpg";
 import whatWeDoImg from "@/assets/what-we-do.jpg";
+import ambulanceHandoverImg from "@/assets/ambulance-handover-ceremony.jpg";
 
 const categories = [
   { id: "all", label: "All" },
@@ -22,13 +23,13 @@ const categories = [
 ];
 
 const featuredNews = {
-  title: "CH Center Launches New Patient Support Initiative",
-  excerpt: "We are excited to announce a comprehensive new program designed to provide enhanced support services for cancer patients and their families across the region.",
-  image: newsUpdatesImg,
-  date: "December 16, 2024",
-  category: "News",
-  readTime: "5 min read",
-  href: "/news-updates/new-initiative",
+  title: "Hyderali Shihab Thangal Memorial Ambulance Fund Handover",
+  excerpt: "Fund Handover Ceremony for Hyderali Shihab Thangal Memorial Ambulance by Bahrain KMCC CH Center Chapter to Thrissur CH Center.",
+  image: ambulanceHandoverImg,
+  date: "December 30, 2025",
+  category: "Events",
+  readTime: "3 min read",
+  href: "/news-updates/ambulance-handover",
 };
 
 const news = [
@@ -112,8 +113,8 @@ const upcomingEvents = [
 const NewsUpdates = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredNews = activeCategory === "all" 
-    ? news 
+  const filteredNews = activeCategory === "all"
+    ? news
     : news.filter(item => item.category.toLowerCase() === activeCategory);
 
   return (

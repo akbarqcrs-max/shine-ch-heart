@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { 
-  Heart, 
-  Users, 
-  GraduationCap, 
-  Wallet, 
-  Home, 
+import {
+  Heart,
+  Users,
+  GraduationCap,
+  Wallet,
+  Home,
   Stethoscope,
   ArrowRight,
   CheckCircle,
@@ -16,21 +16,13 @@ import {
   UtensilsCrossed,
   Moon,
   HandHeart,
-  Calendar,
-  ChevronLeft,
-  ChevronRight
+
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import FeatureCard from "@/components/cards/FeatureCard";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import whatWeDoImg from "@/assets/what-we-do.jpg";
 import serviceMedical from "@/assets/service-medical.jpg";
 import serviceAmbulance from "@/assets/service-ambulance.jpg";
@@ -38,11 +30,7 @@ import serviceFuneral from "@/assets/service-funeral.jpg";
 import serviceIftar from "@/assets/service-iftar.jpg";
 import serviceEid from "@/assets/service-eid.jpg";
 import serviceVolunteering from "@/assets/service-volunteering.jpg";
-import eventAwarenessWalk from "@/assets/event-awareness-walk.jpg";
-import eventIftarGathering from "@/assets/event-iftar-gathering.jpg";
-import eventEidCelebration from "@/assets/event-eid-celebration.jpg";
-import eventFundraisingGala from "@/assets/event-fundraising-gala.jpg";
-import eventFoodDistribution from "@/assets/event-food-distribution.jpg";
+
 
 const mainServices = [
   {
@@ -139,20 +127,6 @@ const communityServices = [
     color: "from-purple-500 to-indigo-500",
   },
   {
-    title: "Iftar Meal",
-    description: "Providing nutritious Iftar meals during Ramadan to those fasting, fostering community spirit.",
-    image: serviceIftar,
-    icon: Moon,
-    color: "from-amber-500 to-yellow-500",
-  },
-  {
-    title: "Eid Meal",
-    description: "Celebrating Eid with festive meals for families, ensuring everyone can partake in the joy.",
-    image: serviceEid,
-    icon: UtensilsCrossed,
-    color: "from-green-500 to-emerald-500",
-  },
-  {
     title: "Volunteering",
     description: "Join our community of dedicated volunteers making a real difference in people's lives.",
     image: serviceVolunteering,
@@ -161,38 +135,7 @@ const communityServices = [
   },
 ];
 
-const events = [
-  {
-    title: "Cancer Awareness Walk",
-    description: "Annual community walk raising awareness and funds for cancer research and patient support.",
-    image: eventAwarenessWalk,
-    date: "March 2024",
-  },
-  {
-    title: "Community Iftar Gathering",
-    description: "Bringing our community together during Ramadan to share blessings and strengthen bonds.",
-    image: eventIftarGathering,
-    date: "April 2024",
-  },
-  {
-    title: "Eid Celebration",
-    description: "Joyful festivities celebrating Eid with families, featuring food, activities, and entertainment.",
-    image: eventEidCelebration,
-    date: "April 2024",
-  },
-  {
-    title: "Fundraising Gala",
-    description: "Annual charity gala bringing supporters together to raise funds for our programs.",
-    image: eventFundraisingGala,
-    date: "May 2024",
-  },
-  {
-    title: "Food Distribution Drive",
-    description: "Volunteers distributing essential food packages to families in need across the community.",
-    image: eventFoodDistribution,
-    date: "Ongoing",
-  },
-];
+
 
 const WhatWeDo = () => {
   return (
@@ -259,13 +202,13 @@ const WhatWeDo = () => {
               >
                 {/* Image Container */}
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={service.image} 
+                  <img
+                    src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-40 group-hover:opacity-60 transition-opacity duration-300`} />
-                  
+
                   {/* Icon Badge */}
                   <div className={`absolute top-4 right-4 w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                     <service.icon className="w-6 h-6 text-white" />
@@ -280,7 +223,7 @@ const WhatWeDo = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {service.description}
                   </p>
-                  
+
                   {/* Learn More Link */}
                   <div className="flex items-center gap-2 text-primary font-medium text-sm group/link cursor-pointer">
                     <span className="group-hover/link:underline">Learn More</span>
@@ -296,99 +239,7 @@ const WhatWeDo = () => {
         </div>
       </section>
 
-      {/* Events Section with Slider */}
-      <section className="py-20 lg:py-28 bg-section-alt">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
-            >
-              Events
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-heading text-3xl md:text-4xl font-bold mb-4"
-            >
-              Our Community Events
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground max-w-2xl mx-auto"
-            >
-              Join us in our events that bring the community together, raise awareness, and make a positive impact.
-            </motion.p>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {events.map((event, index) => (
-                  <CarouselItem key={event.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full"
-                    >
-                      {/* Image Container */}
-                      <div className="relative h-56 overflow-hidden">
-                        <img 
-                          src={event.image} 
-                          alt={event.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        
-                        {/* Date Badge */}
-                        <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5" />
-                          {event.date}
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-6">
-                        <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                          {event.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                          {event.description}
-                        </p>
-                      </div>
-
-                      {/* Bottom Accent */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/60 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    </motion.div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center gap-4 mt-8">
-                <CarouselPrevious className="relative inset-0 translate-x-0 translate-y-0 h-12 w-12 border-primary/30 hover:bg-primary hover:text-primary-foreground" />
-                <CarouselNext className="relative inset-0 translate-x-0 translate-y-0 h-12 w-12 border-primary/30 hover:bg-primary hover:text-primary-foreground" />
-              </div>
-            </Carousel>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Membership Benefits Section */}
       <section className="py-20 lg:py-28">
