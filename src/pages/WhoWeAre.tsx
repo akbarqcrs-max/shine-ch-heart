@@ -204,7 +204,7 @@ const WhoWeAre = () => {
 
 
     {/* Mission & Vision Section */}
-    <section className="py-20 lg:py-28">
+    <section id="mission" className="py-20 lg:py-28">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Mission */}
@@ -315,7 +315,7 @@ const WhoWeAre = () => {
     </section>
 
     {/* Our Journey Timeline Section */}
-    <section className="py-20 bg-section-alt overflow-hidden lg:py-[36px]">
+    <section id="journey" className="py-20 bg-section-alt overflow-hidden lg:py-[36px]">
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.h2 initial={{
@@ -409,7 +409,7 @@ const WhoWeAre = () => {
 
 
     {/* Advisory Board Section */}
-    <section className="py-20 bg-section-alt lg:py-[9px]">
+    <section id="leadership" className="py-20 bg-section-alt lg:py-[9px]">
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.span initial={{
@@ -481,7 +481,7 @@ const WhoWeAre = () => {
 
 
     {/* Team Section */}
-    <section className="py-20 bg-section-dark">
+    <section id="team" className="py-20 bg-section-dark">
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.span initial={{

@@ -13,6 +13,7 @@ import StoriesOfHope from "./pages/StoriesOfHope";
 import NewsUpdates from "./pages/NewsUpdates";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Members from "./pages/Members";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/members" element={<Members />} />
           <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/events" element={<Events />} />
           <Route path="/about-cancer" element={<AboutCancer />} />
