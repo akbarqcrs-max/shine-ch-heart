@@ -62,6 +62,19 @@ import lifeMember12Img from "@/assets/members/life-member-12.png";
 import lifeMember13Img from "@/assets/members/life-member-13.png";
 import lifeMember14Img from "@/assets/members/life-member-14.png";
 import lifeMember15Img from "@/assets/members/life-member-15.png";
+import lifeMember16Img from "@/assets/members/life-member-16.png";
+import lifeMember17Img from "@/assets/members/life-member-17.png";
+import lifeMember18Img from "@/assets/members/life-member-18.png";
+import lifeMember19Img from "@/assets/members/life-member-19.png";
+import lifeMember20Img from "@/assets/members/life-member-20.png";
+import lifeMember21Img from "@/assets/members/life-member-21.png";
+import lifeMember22Img from "@/assets/members/life-member-22.png";
+import lifeMember23Img from "@/assets/members/life-member-23.png";
+import lifeMember24Img from "@/assets/members/life-member-24.png";
+import lifeMember25Img from "@/assets/members/life-member-25.png";
+import lifeMember26Img from "@/assets/members/life-member-26.png";
+import lifeMember27Img from "@/assets/members/life-member-27.png";
+import lifeMember28Img from "@/assets/members/life-member-28.png";
 
 const members = [
     {
@@ -332,66 +345,34 @@ const members = [
 ];
 
 const lifeMembers: any[] = [
-    {
-        name: "Life Member 1",
-        image: lifeMember1Img
-    },
-    {
-        name: "Life Member 2",
-        image: lifeMember2Img
-    },
-    {
-        name: "Life Member 3",
-        image: lifeMember3Img
-    },
-    {
-        name: "Life Member 4",
-        image: lifeMember4Img
-    },
-    {
-        name: "Life Member 5",
-        image: lifeMember5Img
-    },
-    {
-        name: "Life Member 6",
-        image: lifeMember6Img
-    },
-    {
-        name: "Life Member 7",
-        image: lifeMember7Img
-    },
-    {
-        name: "Life Member 8",
-        image: lifeMember8Img
-    },
-    {
-        name: "Life Member 9",
-        image: lifeMember9Img
-    },
-    {
-        name: "Life Member 10",
-        image: lifeMember10Img
-    },
-    {
-        name: "Life Member 11",
-        image: lifeMember11Img
-    },
-    {
-        name: "Life Member 12",
-        image: lifeMember12Img
-    },
-    {
-        name: "Life Member 13",
-        image: lifeMember13Img
-    },
-    {
-        name: "Life Member 14",
-        image: lifeMember14Img
-    },
-    {
-        name: "Life Member 15",
-        image: lifeMember15Img
-    }
+    { name: "Life Member 1", image: lifeMember1Img },
+    { name: "Life Member 2", image: lifeMember2Img },
+    { name: "Life Member 3", image: lifeMember3Img },
+    { name: "Life Member 4", image: lifeMember4Img },
+    { name: "Life Member 5", image: lifeMember5Img },
+    { name: "Life Member 6", image: lifeMember6Img },
+    { name: "Life Member 7", image: lifeMember7Img },
+    { name: "Life Member 8", image: lifeMember8Img },
+    { name: "Life Member 9", image: lifeMember9Img },
+    { name: "Life Member 10", image: lifeMember10Img },
+    { name: "Life Member 11", image: lifeMember11Img },
+    { name: "Life Member 12", image: lifeMember12Img },
+    { name: "Life Member 13", image: lifeMember13Img },
+    { name: "Life Member 14", image: lifeMember14Img },
+    { name: "Life Member 15", image: lifeMember15Img },
+    { name: "Life Member 16", image: lifeMember16Img },
+    { name: "Life Member 17", image: lifeMember17Img },
+    { name: "Life Member 18", image: lifeMember18Img },
+    { name: "Life Member 19", image: lifeMember19Img },
+    { name: "Life Member 20", image: lifeMember20Img },
+    { name: "Life Member 21", image: lifeMember21Img },
+    { name: "Life Member 22", image: lifeMember22Img },
+    { name: "Life Member 23", image: lifeMember23Img },
+    { name: "Life Member 24", image: lifeMember24Img },
+    { name: "Life Member 25", image: lifeMember25Img },
+    { name: "Life Member 26", image: lifeMember26Img },
+    { name: "Life Member 27", image: lifeMember27Img },
+    { name: "Life Member 28", image: lifeMember28Img }
 ];
 
 const Members = () => {
