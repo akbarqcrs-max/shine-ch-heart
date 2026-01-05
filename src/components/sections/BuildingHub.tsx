@@ -7,6 +7,8 @@ import chCenterNightView from "@/assets/ch-center-night-view.jpg";
 import chCenterInteriorRoom from "@/assets/ch-center-interior-room.png";
 import chCenterExterior2 from "@/assets/ch-center-exterior-2.jpg";
 import chCenterExteriorMain from "@/assets/ch-center-exterior-main.jpg";
+import chCenterExterior3 from "@/assets/ch-center-exterior-3.jpg";
+import chCenterExterior4 from "@/assets/ch-center-exterior-4.jpg";
 
 // Using placeholder images for now, can be replaced with actual building photos
 const buildingImages = {
@@ -20,11 +22,8 @@ const buildingImages = {
         "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=800&h=600&fit=crop", // Window view
     ],
     exterior: [
-        chCenterExteriorMain, // New main exterior photo
-        chCenterNightView, // Night view (moved to second)
-        chCenterExterior2, // Side view with lighting
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop", // Glass facade
-        "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&h=600&fit=crop", // Garden area
+        chCenterExterior3, // New exterior photo 1
+        chCenterExterior4, // New exterior photo 2
     ],
     playrooms: [
         "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&h=600&fit=crop", // Kids play area
@@ -41,7 +40,7 @@ const buildingImages = {
 };
 
 const tabs = [
-    { id: "exterior", label: "EXTERIOR", count: 5 },
+    { id: "exterior", label: "EXTERIOR", count: 2 },
     { id: "interior", label: "INTERIOR", count: 7 },
     { id: "playrooms", label: "PLAYROOMS", count: 2 },
     { id: "dining", label: "DINING AREAS", count: 2 },
