@@ -118,6 +118,7 @@ const testimonials = [
 const Index = () => {
   const navigate = useNavigate();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const nextTestimonial = () => {
     setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -126,6 +127,17 @@ const Index = () => {
   const previousTestimonial = () => {
     setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  // Auto-play effect
+  useEffect(() => {
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        nextTestimonial();
+      }, 5000); // Change every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isHovered, activeTestimonial]);
 
   return <Layout>
     {/* Hero Section */}
@@ -554,6 +566,8 @@ const Index = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
           className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           {/* Left: Rotating Card */}
           <div className="relative order-2 lg:order-1">
@@ -635,8 +649,8 @@ const Index = () => {
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeTestimonial
-                        ? 'bg-primary w-8'
-                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      ? 'bg-primary w-8'
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                       }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
