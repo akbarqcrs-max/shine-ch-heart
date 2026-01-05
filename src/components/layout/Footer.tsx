@@ -94,19 +94,19 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  123 Hope Street, Healthcare District,<br />Dubai, UAE
+                  Seethi Sahib Smaraka Soudham, Ambadi Lane,<br />Kokkalai, Thrissur-21
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+97143573411" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  +971 4 357 3411
+                <a href="tel:+919447185435" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                  +91 94471 85435
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:info@chcenter.org" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  info@chcenter.org
+                <a href="mailto:info@chcentrethrissur.org" className="text-muted-foreground hover:text-primary text-sm transition-colors">
+                  info@chcentrethrissur.org
                 </a>
               </li>
             </ul>

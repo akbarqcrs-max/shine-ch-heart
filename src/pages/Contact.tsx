@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   Send,
   ArrowRight,
   CheckCircle
@@ -29,23 +29,23 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: "+971 4 357 3411",
+    details: "+91 94471 85435",
     subtext: "Monday - Friday: 8:00 AM - 5:00 PM",
-    href: "tel:+97143573411",
+    href: "tel:+919447185435",
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: "info@chcenter.org",
+    details: "info@chcentrethrissur.org",
     subtext: "We respond within 24 hours",
-    href: "mailto:info@chcenter.org",
+    href: "mailto:info@chcentrethrissur.org",
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    details: "123 Hope Street, Healthcare District",
-    subtext: "Dubai, United Arab Emirates",
-    href: "https://maps.google.com/?q=Dubai+Healthcare+District",
+    details: "Seethi Sahib Smaraka Soudham, Ambadi Lane",
+    subtext: "Kokkalai, Thrissur-21",
+    href: "https://maps.google.com/?q=Kokkalai+Thrissur+Kerala",
   },
   {
     icon: Clock,
@@ -72,19 +72,19 @@ const quickLinks = [
     title: "Schedule a Call",
     description: "Book a consultation with our experts",
     linkText: "Call Now",
-    href: "tel:+97143573411",
+    href: "tel:+919447185435",
   },
   {
     title: "Request Information",
     description: "Get detailed information about our services",
     linkText: "Email Us",
-    href: "mailto:info@chcenter.org",
+    href: "mailto:info@chcentrethrissur.org",
   },
   {
     title: "Visit Our Center",
     description: "Meet us in person at our location",
     linkText: "Get Directions",
-    href: "https://maps.google.com/?q=Dubai+Healthcare+District",
+    href: "https://maps.google.com/?q=Kokkalai+Thrissur+Kerala",
   },
 ];
 
@@ -149,7 +149,7 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            Whether you need support, have questions, or want to get involved, 
+            Whether you need support, have questions, or want to get involved,
             we're here to help. Reach out to us and our team will respond within 24 hours.
           </motion.p>
         </div>
@@ -167,7 +167,7 @@ const Contact = () => {
               className="bg-card rounded-2xl p-8 lg:p-10 shadow-lg border border-border"
             >
               <h2 className="font-heading text-2xl font-bold mb-6">Send us a message</h2>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -221,8 +221,8 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="service">Service Interest</Label>
-                  <Select 
-                    value={formData.service} 
+                  <Select
+                    value={formData.service}
                     onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}
                   >
                     <SelectTrigger>
@@ -274,7 +274,7 @@ const Contact = () => {
               <div>
                 <h2 className="font-heading text-2xl font-bold mb-4">Get in touch</h2>
                 <p className="text-muted-foreground">
-                  Ready to get the support you need? Reach out to us through any of the 
+                  Ready to get the support you need? Reach out to us through any of the
                   channels below, and our team will respond within 24 hours.
                 </p>
               </div>
@@ -295,8 +295,8 @@ const Contact = () => {
                     <div className="flex-1">
                       <h3 className="font-semibold mb-1">{info.title}</h3>
                       {info.href ? (
-                        <a 
-                          href={info.href} 
+                        <a
+                          href={info.href}
                           className="text-primary hover:underline"
                           target={info.href.startsWith("http") ? "_blank" : undefined}
                           rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -309,7 +309,7 @@ const Contact = () => {
                       <p className="text-sm text-muted-foreground">{info.subtext}</p>
                     </div>
                     {info.href && (
-                      <a 
+                      <a
                         href={info.href}
                         className="text-primary hover:text-primary/80"
                         target={info.href.startsWith("http") ? "_blank" : undefined}
@@ -330,7 +330,7 @@ const Contact = () => {
                 className="rounded-2xl overflow-hidden shadow-lg h-64 bg-section-alt"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.748559583711!2d55.31853927602669!3d25.234368977679893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20Healthcare%20City!5e0!3m2!1sen!2sae!4v1703000000000!5m2!1sen!2sae"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1827874916447!2d76.21376637507652!3d10.5265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDMxJzM1LjQiTiA3NsKwMTInNTcuNiJF!5e0!3m2!1sen!2sin!4v1000000000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
