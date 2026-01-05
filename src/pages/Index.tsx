@@ -518,10 +518,10 @@ const Index = () => {
     </section>
 
     {/* Testimonials Section */}
-    <section className="py-20 bg-section-alt lg:py-[30px]">
+    <section className="py-12 bg-section-alt lg:py-16">
       <div className="container-custom">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.span initial={{
             opacity: 0
           }} whileInView={{
@@ -571,10 +571,10 @@ const Index = () => {
           once: true
         }} transition={{
           delay: 0.3
-        }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto py-[10px]">
+        }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="grid lg:grid-cols-2 gap-8 items-center max-w-5xl mx-auto py-[10px]">
           {/* Left: Rotating Card */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-[3/4] max-w-md mx-auto">
+            <div className="relative aspect-[3/4] max-w-xs mx-auto">
               {/* Background decorative elements */}
               <div className="absolute inset-0 bg-primary/5 rounded-3xl" style={{
                 transform: 'rotate(6deg)'
@@ -676,8 +676,8 @@ const Index = () => {
                 name: "LuLu",
                 logo: luluLogo
               }].map(partner => <div key={partner.name} className="flex justify-center items-center h-32 px-4 bg-muted/30 rounded-lg border border-border/50">
-                  <img src={partner.logo} alt={partner.name} className="max-h-24 w-auto object-contain" />
-                </div>)}
+                <img src={partner.logo} alt={partner.name} className="max-h-24 w-auto object-contain" />
+              </div>)}
             </div>
           </div>
         </div>
