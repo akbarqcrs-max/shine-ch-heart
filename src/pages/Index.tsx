@@ -7,7 +7,7 @@ import ServiceCard from "@/components/cards/ServiceCard";
 import BuildingHub from "@/components/sections/BuildingHub";
 
 // Import images
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-image.jpeg";
 import whoWeAreImg from "@/assets/who-we-are.jpg";
 import whatWeDoImg from "@/assets/what-we-do.jpg";
 import aboutCancerImg from "@/assets/about-cancer.jpg";
