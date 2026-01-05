@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Heart, Users, HandHeart, BookOpen, Sparkles, Newspaper, MessageCircle, Phone, ArrowRight, Play, CheckCircle, Stethoscope, Ambulance, Cross } from "lucide-react";
+import { Heart, Users, HandHeart, BookOpen, Sparkles, Newspaper, MessageCircle, Phone, ArrowRight, Play, CheckCircle, Stethoscope, Ambulance, Cross, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import ServiceCard from "@/components/cards/ServiceCard";
@@ -60,8 +61,71 @@ const stats = [{
   number: "50+",
   label: "Programs"
 }];
+
+const Counter = ({ value }: { value: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Parse numeric value and suffix
+  const numericPart = value.replace(/[,+]/g, "");
+  const suffix = value.match(/[+]$/) ? "+" : "";
+  const target = parseInt(numericPart, 10);
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => {
+    return Math.floor(latest).toLocaleString() + suffix;
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, target, {
+        duration: 2,
+        ease: "easeOut",
+      });
+      return controls.stop;
+    }
+  }, [isInView, target, count]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Cancer Survivor",
+    text: "The support I received from CH Center was incredible. From the moment I walked through the door, I felt cared for and understood. The staff went above and beyond to help me navigate my treatment journey.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=1000&fit=crop"
+  },
+  {
+    name: "Michael Chen",
+    role: "Family Member",
+    text: "When my mother was diagnosed, we didn't know where to turn. CH Center provided not just medical support, but emotional guidance for our entire family. Their compassion made all the difference.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
+  },
+  {
+    name: "Dr. Emily Rodriguez",
+    role: "Healthcare Partner",
+    text: "As a healthcare professional, I've seen firsthand the impact CH Center has on patients and families. Their comprehensive approach to cancer care is truly exceptional and sets a standard for the community.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop"
+  },
+  {
+    name: "James Williams",
+    role: "Volunteer",
+    text: "Volunteering at CH Center has been one of the most rewarding experiences of my life. Seeing the hope and resilience in the faces of patients and their families inspires me every day.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1000&fit=crop"
+  }
+];
 const Index = () => {
   const navigate = useNavigate();
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const nextTestimonial = () => {
+    setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const previousTestimonial = () => {
+    setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return <Layout>
     {/* Hero Section */}
@@ -197,7 +261,7 @@ const Index = () => {
             once: true
           }} className="text-center">
             <div className="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">
-              {stat.number}
+              <Counter value={stat.number} />
             </div>
             <div className="text-primary-foreground/80 text-sm">
               {stat.label}
@@ -446,6 +510,141 @@ const Index = () => {
             </div>
           </motion.div>)}
         </div>
+      </div>
+    </section>
+
+    {/* Testimonials Section */}
+    <section className="py-20 lg:py-28 bg-section-alt">
+      <div className="container-custom">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+          >
+            Testimonials
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+          >
+            <span className="text-foreground">What Our </span>
+            <span className="text-gradient-primary">Community Says</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
+            Hear from those whose lives have been touched by our care and support.
+          </motion.p>
+        </div>
+
+        {/* Testimonial Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto"
+        >
+          {/* Left: Rotating Card */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative aspect-[3/4] max-w-md mx-auto">
+              {/* Background decorative elements */}
+              <div className="absolute inset-0 bg-primary/5 rounded-3xl" style={{ transform: 'rotate(6deg)' }} />
+
+              {/* Main image card */}
+              <motion.div
+                key={activeTestimonial}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative w-full h-full"
+                style={{ transform: 'rotate(-6deg)' }}
+              >
+                <img
+                  src={testimonials[activeTestimonial].image}
+                  alt={testimonials[activeTestimonial].name}
+                  className="w-full h-full object-cover rounded-3xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-3xl" />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="order-1 lg:order-2 space-y-6">
+            <motion.div
+              key={`content-${activeTestimonial}`}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Quote Icon */}
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+              </div>
+
+              {/* Testimonial Text */}
+              <p className="text-foreground text-lg leading-relaxed mb-6">
+                "{testimonials[activeTestimonial].text}"
+              </p>
+
+              {/* Author Info */}
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-heading text-xl font-bold text-foreground">
+                  {testimonials[activeTestimonial].name}
+                </h4>
+                <p className="text-muted-foreground">
+                  {testimonials[activeTestimonial].role}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Navigation Buttons */}
+            <div className="flex items-center gap-4 pt-4">
+              <button
+                onClick={previousTestimonial}
+                className="w-12 h-12 rounded-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextTestimonial}
+                className="w-12 h-12 rounded-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="flex gap-2 ml-4">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTestimonial(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeTestimonial
+                        ? 'bg-primary w-8'
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
 
