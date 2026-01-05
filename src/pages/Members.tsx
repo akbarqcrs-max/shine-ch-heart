@@ -47,6 +47,16 @@ import member40Img from "@/assets/members/member-40.png";
 import member41Img from "@/assets/members/member-41.png";
 import member42Img from "@/assets/members/member-42.png";
 import member43Img from "@/assets/members/member-43.png";
+import lifeMember1Img from "@/assets/members/life-member-1.png";
+import lifeMember2Img from "@/assets/members/life-member-2.png";
+import lifeMember3Img from "@/assets/members/life-member-3.png";
+import lifeMember4Img from "@/assets/members/life-member-4.png";
+import lifeMember5Img from "@/assets/members/life-member-5.png";
+import lifeMember6Img from "@/assets/members/life-member-6.png";
+import lifeMember7Img from "@/assets/members/life-member-7.png";
+import lifeMember8Img from "@/assets/members/life-member-8.png";
+import lifeMember9Img from "@/assets/members/life-member-9.png";
+import lifeMember10Img from "@/assets/members/life-member-10.png";
 
 const members = [
     {
@@ -316,6 +326,49 @@ const members = [
     }
 ];
 
+const lifeMembers: any[] = [
+    {
+        name: "Life Member 1",
+        image: lifeMember1Img
+    },
+    {
+        name: "Life Member 2",
+        image: lifeMember2Img
+    },
+    {
+        name: "Life Member 3",
+        image: lifeMember3Img
+    },
+    {
+        name: "Life Member 4",
+        image: lifeMember4Img
+    },
+    {
+        name: "Life Member 5",
+        image: lifeMember5Img
+    },
+    {
+        name: "Life Member 6",
+        image: lifeMember6Img
+    },
+    {
+        name: "Life Member 7",
+        image: lifeMember7Img
+    },
+    {
+        name: "Life Member 8",
+        image: lifeMember8Img
+    },
+    {
+        name: "Life Member 9",
+        image: lifeMember9Img
+    },
+    {
+        name: "Life Member 10",
+        image: lifeMember10Img
+    }
+];
+
 const Members = () => {
     return (
         <Layout>
@@ -385,6 +438,74 @@ const Members = () => {
                             </motion.div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            <section className="py-20 bg-section-alt">
+                <div className="container-custom">
+                    <div className="text-center mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                        >
+                            <Users className="w-8 h-8 text-primary" />
+                        </motion.div>
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4"
+                        >
+                            Lifetime Support
+                        </motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+                        >
+                            <span className="text-gradient-heading">Life Members</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+                        >
+                            Our Life Members are dedicated patrons who have committed their lifelong support to the CH Centre, ensuring the sustainability of our community initiatives and services.
+                        </motion.p>
+                    </div>
+
+                    {lifeMembers.length > 0 ? (
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                            {lifeMembers.map((member, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="bg-background rounded-2xl overflow-hidden shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
+                                >
+                                    <div className="relative aspect-[3/4] bg-muted overflow-hidden">
+                                        <img
+                                            src={member.image}
+                                            alt={member.name || `Life Member ${index + 1}`}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12 text-muted-foreground">
+                            Coming Soon
+                        </div>
+                    )}
                 </div>
             </section>
         </Layout>
