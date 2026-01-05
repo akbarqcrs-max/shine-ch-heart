@@ -3,16 +3,12 @@ import { useState } from "react";
 import { ArrowRight, Calendar, Clock, Filter } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
-import NewsCard from "@/components/cards/NewsCard";
+import NewsCard, { NewsCardProps } from "@/components/cards/NewsCard";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { featuredNews, news } from "@/data/newsData";
 import newsUpdatesImg from "@/assets/news-updates.jpg";
-import story1 from "@/assets/story-1.jpg";
-import story2 from "@/assets/story-2.jpg";
-import story3 from "@/assets/story-3.jpg";
-import story4 from "@/assets/story-4.jpg";
-import whatWeDoImg from "@/assets/what-we-do.jpg";
-import inaugurationImg from "@/assets/thrissur-ch-center-inauguration.jpg";
 
 const categories = [
   { id: "all", label: "All" },
@@ -20,73 +16,6 @@ const categories = [
   { id: "blog", label: "Blog Articles" },
   { id: "events", label: "Events" },
   { id: "resources", label: "Resources" },
-];
-
-const featuredNews = {
-  title: "Thrissur CH Center Inauguration",
-  excerpt: "The grand inauguration ceremony of the Thrissur CH Center will take place on February 14, 2026. Join us for this momentous occasion.",
-  image: inaugurationImg,
-  date: "February 14, 2026",
-  category: "Events",
-  readTime: "2 min read",
-  href: "/news-updates/inauguration",
-};
-
-const news = [
-  {
-    title: "Bridging the Gap: Financing Cancer Care",
-    excerpt: "New research highlights the importance of accessible financing options for cancer treatment and how CH Center is helping families.",
-    image: whatWeDoImg,
-    date: "December 11, 2024",
-    category: "Blog",
-    readTime: "4 min read",
-    href: "/news-updates/financing-cancer-care",
-  },
-  {
-    title: "Community Awareness Walk Success",
-    excerpt: "Over 5,000 participants joined our annual cancer awareness walk, raising over $500,000 for patient support programs.",
-    image: story4,
-    date: "December 7, 2024",
-    category: "Events",
-    readTime: "3 min read",
-    href: "/news-updates/awareness-walk",
-  },
-  {
-    title: "New Research Grant Announcement",
-    excerpt: "CH Center awards $1 million in research grants to support innovative cancer treatment studies at local universities.",
-    image: story1,
-    date: "November 25, 2024",
-    category: "News",
-    readTime: "5 min read",
-    href: "/news-updates/research-grant",
-  },
-  {
-    title: "Volunteer Training Program Begins",
-    excerpt: "New volunteer training sessions are now open for registration. Join our team and make a difference in patients' lives.",
-    image: story2,
-    date: "November 18, 2024",
-    category: "Events",
-    readTime: "2 min read",
-    href: "/news-updates/volunteer-training",
-  },
-  {
-    title: "Understanding Immunotherapy: A Guide",
-    excerpt: "A comprehensive guide to understanding immunotherapy treatments and how they're changing cancer care.",
-    image: story3,
-    date: "November 10, 2024",
-    category: "Resources",
-    readTime: "8 min read",
-    href: "/news-updates/immunotherapy-guide",
-  },
-  {
-    title: "Mental Health Support for Cancer Patients",
-    excerpt: "New study emphasizes the importance of mental health support during cancer treatment. Here's what you need to know.",
-    image: story4,
-    date: "October 28, 2024",
-    category: "Blog",
-    readTime: "6 min read",
-    href: "/news-updates/mental-health-support",
-  },
 ];
 
 const upcomingEvents = [
@@ -112,6 +41,7 @@ const upcomingEvents = [
 
 const NewsUpdates = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedNews, setSelectedNews] = useState<NewsCardProps | null>(null);
 
   const filteredNews = activeCategory === "all"
     ? news
@@ -157,7 +87,11 @@ const NewsUpdates = () => {
             Spotlight
           </motion.h2>
 
-          <NewsCard {...featuredNews} featured />
+          <NewsCard
+            {...featuredNews}
+            featured
+            onClick={() => setSelectedNews(featuredNews)}
+          />
         </div>
       </section>
 
@@ -175,7 +109,12 @@ const NewsUpdates = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredNews.map((item, index) => (
-              <NewsCard key={item.title} {...item} index={index} />
+              <NewsCard
+                key={item.title}
+                {...item}
+                index={index}
+                onClick={() => setSelectedNews(item)}
+              />
             ))}
           </div>
 
@@ -279,6 +218,62 @@ const NewsUpdates = () => {
           </div>
         </div>
       </section>
+
+      {/* News Detail Modal */}
+      <Dialog open={!!selectedNews} onOpenChange={(open) => !open && setSelectedNews(null)}>
+        <DialogContent className="max-w-4xl w-[95vw] overflow-y-auto max-h-[90vh] p-0 gap-0">
+          {selectedNews && (
+            <>
+              <div className="relative w-full overflow-hidden bg-black/5">
+                <img
+                  src={selectedNews.image}
+                  alt={selectedNews.title}
+                  className="w-full h-auto max-h-[70vh] object-contain mx-auto"
+                />
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-3 py-1.5 bg-primary text-primary-foreground text-sm font-medium rounded-full shadow-md">
+                    {selectedNews.category}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6 md:p-8 space-y-6">
+                <DialogHeader>
+                  <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm mb-3">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4" />
+                      <span>{selectedNews.date}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4" />
+                      <span>{selectedNews.readTime}</span>
+                    </div>
+                  </div>
+                  <DialogTitle className="text-2xl md:text-3xl font-heading font-bold leading-tight text-left">
+                    {selectedNews.title}
+                  </DialogTitle>
+                </DialogHeader>
+
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  <p className="text-lg leading-relaxed text-foreground/90">
+                    {selectedNews.excerpt}
+                  </p>
+                  <p className="text-muted-foreground">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </div>
+
+                <div className="flex justify-end pt-4 border-t border-border">
+                  <Button onClick={() => setSelectedNews(null)}>Close</Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import ServiceCard from "@/components/cards/ServiceCard";
 import BuildingHub from "@/components/sections/BuildingHub";
+import NewsCarousel from "@/components/sections/NewsCarousel";
 
 // Import images
 import heroImage from "@/assets/hero-image.jpeg";
@@ -650,6 +651,9 @@ const Index = () => {
         </motion.div>
       </div>
     </section>
+
+    {/* News Carousel */}
+    <NewsCarousel />
 
     {/* Partners Section */}
     <section className="py-20 lg:py-[55px]">
