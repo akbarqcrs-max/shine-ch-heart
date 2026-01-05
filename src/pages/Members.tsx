@@ -57,6 +57,11 @@ import lifeMember7Img from "@/assets/members/life-member-7.png";
 import lifeMember8Img from "@/assets/members/life-member-8.png";
 import lifeMember9Img from "@/assets/members/life-member-9.png";
 import lifeMember10Img from "@/assets/members/life-member-10.png";
+import lifeMember11Img from "@/assets/members/life-member-11.png";
+import lifeMember12Img from "@/assets/members/life-member-12.png";
+import lifeMember13Img from "@/assets/members/life-member-13.png";
+import lifeMember14Img from "@/assets/members/life-member-14.png";
+import lifeMember15Img from "@/assets/members/life-member-15.png";
 
 const members = [
     {
@@ -366,6 +371,26 @@ const lifeMembers: any[] = [
     {
         name: "Life Member 10",
         image: lifeMember10Img
+    },
+    {
+        name: "Life Member 11",
+        image: lifeMember11Img
+    },
+    {
+        name: "Life Member 12",
+        image: lifeMember12Img
+    },
+    {
+        name: "Life Member 13",
+        image: lifeMember13Img
+    },
+    {
+        name: "Life Member 14",
+        image: lifeMember14Img
+    },
+    {
+        name: "Life Member 15",
+        image: lifeMember15Img
     }
 ];
 
