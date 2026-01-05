@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { Heart, Users, HandHeart, BookOpen, Sparkles, Newspaper, MessageCircle, Phone, ArrowRight, Play, CheckCircle } from "lucide-react";
+import { Heart, Users, HandHeart, BookOpen, Sparkles, Newspaper, MessageCircle, Phone, ArrowRight, Play, CheckCircle, Stethoscope, Ambulance, Cross } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import ServiceCard from "@/components/cards/ServiceCard";
@@ -16,24 +16,36 @@ import newsUpdatesImg from "@/assets/news-updates.jpg";
 import contactImg from "@/assets/contact.jpg";
 import luluLogo from "@/assets/partners/lulu.png";
 import riskFactorsImg from "@/assets/risk-factors.jpg";
+
+import serviceMedical from "@/assets/service-medical.jpg";
+import serviceAmbulance from "@/assets/service-ambulance.jpg";
+import serviceFuneral from "@/assets/service-funeral.jpg";
+import serviceVolunteering from "@/assets/service-volunteering.jpg";
+
 const services = [{
-  title: "Who We Are",
-  description: "Learn about our mission, vision, and the dedicated team working tirelessly to support those affected by cancer.",
-  icon: Users,
-  image: whoWeAreImg,
-  href: "/who-we-are"
-}, {
-  title: "What We Do",
-  description: "Discover our comprehensive range of services including patient support, counseling, financial assistance, and community programs.",
-  icon: HandHeart,
-  image: whatWeDoImg,
+  title: "Medical Assistance",
+  description: "Comprehensive medical support including consultations, medications, and treatment coordination for those in need.",
+  icon: Stethoscope,
+  image: serviceMedical,
   href: "/what-we-do"
 }, {
-  title: "All About Cancer",
-  description: "Access valuable information about cancer types, prevention, treatment options, and resources to help you understand and fight cancer.",
-  icon: BookOpen,
-  image: aboutCancerImg,
-  href: "/about-cancer"
+  title: "Ambulance Services",
+  description: "24/7 emergency ambulance services ensuring swift medical transportation when every second counts.",
+  icon: Ambulance,
+  image: serviceAmbulance,
+  href: "/what-we-do"
+}, {
+  title: "Funeral Services",
+  description: "Dignified funeral arrangements and support for families during their most difficult times.",
+  icon: Cross,
+  image: serviceFuneral,
+  href: "/what-we-do"
+}, {
+  title: "Volunteering",
+  description: "Join our community of dedicated volunteers making a real difference in people's lives.",
+  icon: HandHeart,
+  image: serviceVolunteering,
+  href: "/what-we-do"
 }];
 const stats = [{
   number: "10,000+",
@@ -243,7 +255,7 @@ const Index = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => <ServiceCard key={service.title} {...service} index={index} />)}
         </div>
       </div>
