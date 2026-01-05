@@ -154,7 +154,9 @@ const Index = () => {
             <div className="relative">
               {/* Main circular image like reference */}
               <div className="aspect-square max-w-md mx-auto lg:max-w-none lg:aspect-[4/5] rounded-[40px] lg:rounded-[60px] overflow-hidden shadow-2xl">
-                <img src={heroImage} alt="Caring healthcare professional with patient" className="w-full h-full object-cover" />
+                <img src={heroImage} alt="Caring healthcare professional with patient" className="w-full h-full object-cover" style={{
+                  objectPosition: "80% center"
+                }} />
               </div>
 
               {/* Decorative elements */}
