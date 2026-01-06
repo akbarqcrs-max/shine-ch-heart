@@ -475,17 +475,20 @@ const Index = () => {
             title: "HPV Prevention ",
             desc: "Human Papillomavirus can cause 6 types of cancer. But preventing it-and the cancers it causes-is simple.",
             image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
-            icon: CheckCircle
+            icon: CheckCircle,
+            href: "/about-cancer"
           }, {
             title: "Stay Away From Tobacco",
             desc: "Let the Great American Smokeout event be your day to start your journey toward a smoke-free life.",
             image: riskFactorsImg,
-            icon: Users
+            icon: Users,
+            href: "/about-cancer"
           }, {
             title: "Eat Healthy and Get Active",
             desc: "Learn about the benefits of good nutrition, regular physical activity, and staying at a healthy weight.",
             image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=800&h=600&fit=crop",
-            icon: Heart
+            icon: Heart,
+            href: "/about-cancer"
           }].map((item, index) => <motion.div key={index} initial={{
             opacity: 0,
             y: 20
@@ -497,24 +500,49 @@ const Index = () => {
           }} transition={{
             delay: index * 0.1
           }} className="group relative overflow-hidden rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
-            <div className="aspect-video overflow-hidden">
-              <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </div>
-            <div className="p-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                <item.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {item.desc}
-              </p>
-              <Button variant="link" className="p-0 h-auto gap-2 text-primary group-hover:text-primary/80">
-                Learn More
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </div>
+            {item.href ? (
+              <Link to={item.href} className="block h-full">
+                <div className="aspect-video overflow-hidden">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {item.desc}
+                  </p>
+                  <Button variant="link" className="p-0 h-auto gap-2 text-primary group-hover:text-primary/80">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              </Link>
+            ) : (
+              <>
+                <div className="aspect-video overflow-hidden">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {item.desc}
+                  </p>
+                  <Button variant="link" className="p-0 h-auto gap-2 text-primary group-hover:text-primary/80">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              </>
+            )}
           </motion.div>)}
         </div>
       </div>
