@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 
 import whatWeDoImg from "@/assets/what-we-do.jpg";
 import serviceMedical from "@/assets/service-medical.jpg";
-import serviceAmbulance from "@/assets/service-ambulance.jpg";
+import serviceAmbulance from "@/assets/service-ambulance-new.jpg";
 import serviceFuneral from "@/assets/service-funeral.jpg";
 import serviceIftar from "@/assets/service-iftar.jpg";
 import serviceEid from "@/assets/service-eid.jpg";

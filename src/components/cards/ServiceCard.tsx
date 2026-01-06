@@ -9,9 +9,10 @@ interface ServiceCardProps {
   image: string;
   href: string;
   index?: number;
+  imagePosition?: string;
 }
 
-const ServiceCard = ({ title, description, icon: Icon, image, href, index = 0 }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, icon: Icon, image, href, index = 0, imagePosition = "center" }: ServiceCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -29,6 +30,7 @@ const ServiceCard = ({ title, description, icon: Icon, image, href, index = 0 }:
             src={image}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            style={{ objectPosition: imagePosition }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
           <div className="absolute bottom-4 left-4">

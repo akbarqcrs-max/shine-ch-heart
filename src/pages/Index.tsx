@@ -19,7 +19,7 @@ import contactImg from "@/assets/contact.jpg";
 import luluLogo from "@/assets/partners/lulu.png";
 import riskFactorsImg from "@/assets/risk-factors.jpg";
 import serviceMedical from "@/assets/service-medical.jpg";
-import serviceAmbulance from "@/assets/service-ambulance.jpg";
+import serviceAmbulance from "@/assets/service-ambulance-new.jpg";
 import serviceFuneral from "@/assets/service-funeral.jpg";
 import serviceVolunteering from "@/assets/service-volunteering.jpg";
 const services = [{
@@ -33,7 +33,8 @@ const services = [{
   description: "24/7 emergency ambulance services ensuring swift medical transportation when every second counts.",
   icon: Ambulance,
   image: serviceAmbulance,
-  href: "/what-we-do"
+  href: "/what-we-do",
+  imagePosition: "center"
 }, {
   title: "Funeral Services",
   description: "Dignified funeral arrangements and support for families during their most difficult times.",
@@ -520,7 +521,7 @@ const Index = () => {
     </section>
 
     {/* Testimonials Section */}
-    <section className="py-12 bg-section-alt lg:py-16">
+    <section className="py-8 bg-section-alt lg:py-12">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
