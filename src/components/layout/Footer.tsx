@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/search/top/?q=ch%20centre%20thrissur&__epa__=SEARCH_BOX&__eps__=comet.profile&__hcr__=eyJpZCI6IjEwMDA2NDY4MTM2MTcxMiIsInNvdXJjZSI6IlRZUEVBSEVBRF9QQUdFX01BUktFUiJ9", label: "Facebook" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
