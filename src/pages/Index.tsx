@@ -9,7 +9,7 @@ import BuildingHub from "@/components/sections/BuildingHub";
 import NewsCarousel from "@/components/sections/NewsCarousel";
 
 // Import images
-import heroImage from "@/assets/hero-image.jpeg";
+import heroImage from "@/assets/hero-main.jpg";
 import whoWeAreImg from "@/assets/who-we-are.jpg";
 import whatWeDoImg from "@/assets/what-we-do.jpg";
 import aboutCancerImg from "@/assets/about-cancer.jpg";
@@ -90,26 +90,27 @@ const Counter = ({
   }, [isInView, target, count]);
   return <motion.span ref={ref}>{rounded}</motion.span>;
 };
+import sadiqAliThangalImg from "@/assets/testimonials/sadiq-ali-thangal.png";
+import pkKunhalikuttyImg from "@/assets/testimonials/pk-kunhalikutty.png";
+import drMkMuneerImg from "@/assets/testimonials/dr-mk-muneer.png";
+
 const testimonials = [{
-  name: "Sarah Johnson",
-  role: "Cancer Survivor",
-  text: "The support I received from CH Center was incredible. From the moment I walked through the door, I felt cared for and understood. The staff went above and beyond to help me navigate my treatment journey.",
-  image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=1000&fit=crop"
+  name: "Sayyid Sadiq Ali Shihab Thangal",
+  role: "Panakkad",
+  text: "നിർധന രോഗികളെ സഹായിക്കുന്നതിൽ അതുല്യ മാതൃകയാണ് സി.എച്ച് സെന്റർ. റീജിയണൽ കാൻസർ സെന്റർ, ഗവൺമെൻ്റ് മെഡിക്കൽ കോളേജുകൾ ഉൾപ്പെടെ പ്രധാന ആശുപത്രികളിൽ ചികിത്സ തേടി എത്തുന്ന നിർധന രോഗികളുടെ അഭയകേന്ദ്രങ്ങളായി അവ മാറിക്കഴിഞ്ഞു. തൃശൂർ ഗവൺമെൻ്റ് മെഡിക്കൽ കോളേജിനെ ആശ്രയിക്കുന്ന കാൻസർ രോഗികൾക്ക് സൗജന്യ താമസവും ഭക്ഷണവും ഉൾപ്പെടെയുള്ള സൗകര്യങ്ങൾ ഏർപ്പെടുത്തുന്നതിനായി മെഡിക്കൽ കോളേജിന് സമീപം ഒരുക്കുന്ന തൃശൂർ സി.എച്ച് സെൻ്ററിന്റെ നിർമ്മാണം അവസാന ഘട്ടത്തിലാണ്. രോഗങ്ങൾ മൂലം ദുരിതമനുഭവിക്കുന്ന പതിനായിരങ്ങൾക്ക് തണലേകുന്ന ഈ നന്മയിൽ അംഗമാകുവാൻ പ്രത്യേകം താല്പര്യപ്പെടുന്നു.",
+  image: sadiqAliThangalImg
 }, {
-  name: "Michael Chen",
-  role: "Family Member",
-  text: "When my mother was diagnosed, we didn't know where to turn. CH Center provided not just medical support, but emotional guidance for our entire family. Their compassion made all the difference.",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
+  name: "P.K. Kunhalikutty",
+  role: "MLA & National General Secretary, IUML",
+  text: "ജീവകാരുണ്യ പ്രവർത്തന രംഗത്ത് മികച്ച സേവനങ്ങളാണ് സി.എച്ച് സെന്ററുകൾ നിർവ്വഹിച്ച് കൊണ്ടിരിക്കുന്നത്. രോഗികൾക്ക് ചികിത്സ, താമസം, മരുന്ന്, ആംബുലൻസ് സൗകര്യങ്ങൾ തുടങ്ങി നിരവധി മേഖലകളിലേക്കാണ് സി.എച്ച് സെന്ററുകൾ വ്യാപിച്ചിട്ടുള്ളത്. ഗവ. മെഡിക്കൽ കോളേജുകൾ ഉൾപ്പെടെയുള്ള പ്രധാന ആശുപത്രികളിൽ ചികിത്സക്കായി എത്തുന്ന രോഗികൾക്ക് ഇത്തരം സഹായങ്ങൾ വലിയ ആശ്വാസം നൽകുന്നുണ്ട്. തൃശൂർ ഗവ. മെഡിക്കൽ കോളേജിനു സമീപം നിർമ്മാണം ആരംഭിച്ച സി.എച്ച് സെന്റർ പണികൾ പൂർത്തിയാകാൻ ഇനി ഏതാനും മാസങ്ങൾ മാത്രം. പാവം കാൻസർ രോഗികൾക്ക് അഭയമാകാനുള്ള സി.എച്ച് സെന്റർ പ്രവർത്തനങ്ങളിൽ എല്ലാവരും പങ്കാളികളാകണമെന്ന് സ്നേഹപൂർവ്വം താൽപ്പര്യപ്പെടുന്നു.",
+  image: pkKunhalikuttyImg
+
+
 }, {
-  name: "Dr. Emily Rodriguez",
-  role: "Healthcare Partner",
-  text: "As a healthcare professional, I've seen firsthand the impact CH Center has on patients and families. Their comprehensive approach to cancer care is truly exceptional and sets a standard for the community.",
-  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop"
-}, {
-  name: "James Williams",
-  role: "Volunteer",
-  text: "Volunteering at CH Center has been one of the most rewarding experiences of my life. Seeing the hope and resilience in the faces of patients and their families inspires me every day.",
-  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1000&fit=crop"
+  name: "Dr. M.K. Muneer",
+  role: "MLA",
+  text: "മെഡിക്കൽ കോളജുകളിലും അതോടൊപ്പം പ്രധാന ആശുപത്രികളിലും എത്തുന്ന നിരാലംബരും നിരാശ്രയരുമായ രോഗികൾക്ക് കാരുണ്യസ്പർശമായി മാറുക എന്ന കർമ്മമാണ് സി.എച്ച് സെന്ററുകൾ കേരളത്തിൽ ഉടനീളം നിർവഹിക്കുന്നത്. തൃശൂരിൽ ആരംഭിച്ചിട്ടുള്ള സി.എച്ച് സെൻ്റർ ഗവൺമെൻ്റ് മെഡിക്കൽ കോളജ് കേന്ദ്രമായി പ്രവർത്തിക്കാനാണ് ലക്ഷ്യമിട്ടിരിക്കുന്നത്. അതോടൊപ്പം മറ്റു ആശുപത്രികളിലെത്തുന്ന രോഗികൾക്ക് സഹായമാവുക എന്നത് കടമയും കർത്തവ്യവുമാണ്. തൃശൂർ മെഡിക്കൽ കോളജിന് സമീപം നിർമ്മാണത്തിലിരിക്കുന്ന സി.എച്ച് സെൻ്റർ ഡിസംബറിൽ പൂർത്തിയാകും. ഇത് എന്നെന്നും പാവപ്പെട്ട രോഗികൾക്ക് ഒരു അത്താണിയായി മാറും എന്ന കാര്യത്തിൽ സംശയമില്ല. മെമ്പർഷിപ്പ് ക്യാമ്പയിനിലൂടെയാണ് ഫണ്ട് സമാഹരിക്കുന്നത്. മെമ്പർഷിപ്പ് എന്ന് പറഞ്ഞാൽ നാം നമ്മുടേതായ ധാർമ്മിക ഉത്തരവാദിത്വ‍ം നിർവഹിക്കുന്നുവെന്ന് മാത്രമാണ്. അതുകൊണ്ട് താങ്കളും പങ്കാളികളാകണമെന്ന് സ്നേഹത്തോടെ താൽപ്പര്യപ്പെടുന്നു.",
+  image: drMkMuneerImg
 }];
 const Index = () => {
   const navigate = useNavigate();
@@ -234,9 +235,9 @@ const Index = () => {
           }} className="relative">
             <div className="relative">
               {/* Main circular image like reference */}
-              <div className="aspect-square max-w-md mx-auto lg:max-w-none lg:aspect-[4/5] rounded-[40px] lg:rounded-[60px] overflow-hidden shadow-2xl">
+              <div className="aspect-square max-w-md mx-auto lg:max-w-md lg:aspect-[4/5] rounded-[40px] lg:rounded-[60px] overflow-hidden shadow-2xl">
                 <img src={heroImage} alt="Caring healthcare professional with patient" className="w-full h-full object-cover" style={{
-                  objectPosition: "80% center"
+                  objectPosition: "center top"
                 }} />
               </div>
 
