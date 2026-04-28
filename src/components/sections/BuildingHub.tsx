@@ -39,16 +39,30 @@ const buildingImages = {
     ],
 };
 
+const allImages = [
+    ...buildingImages.exterior,
+    ...buildingImages.interior,
+    ...buildingImages.playrooms,
+    ...buildingImages.dining,
+    ...buildingImages.common,
+];
+
+const galleryData: Record<string, string[]> = {
+    all: allImages,
+    ...buildingImages,
+};
+
 const tabs = [
-    { id: "exterior", label: "EXTERIOR", count: 2 },
-    { id: "interior", label: "INTERIOR", count: 7 },
-    { id: "playrooms", label: "PLAYROOMS", count: 2 },
-    { id: "dining", label: "DINING AREAS", count: 2 },
-    { id: "common", label: "COMMON AREAS", count: 2 },
+    { id: "all", label: "ALL", count: allImages.length },
+    { id: "exterior", label: "EXTERIOR", count: buildingImages.exterior.length },
+    { id: "interior", label: "INTERIOR", count: buildingImages.interior.length },
+    { id: "playrooms", label: "PLAYROOMS", count: buildingImages.playrooms.length },
+    { id: "dining", label: "DINING AREAS", count: buildingImages.dining.length },
+    { id: "common", label: "COMMON AREAS", count: buildingImages.common.length },
 ];
 
 const BuildingHub = () => {
-    const [activeTab, setActiveTab] = useState("exterior");
+    const [activeTab, setActiveTab] = useState("all");
 
     return (
         <section className="py-20 bg-section-alt">
@@ -116,25 +130,24 @@ const BuildingHub = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.4 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]"
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                         >
-                            {buildingImages[activeTab as keyof typeof buildingImages].map((img, index) => (
+                            {galleryData[activeTab].map((img, index) => (
                                 <motion.div
                                     key={`${activeTab}-${index}`}
-                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className={`relative group overflow-hidden rounded-2xl bg-white p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1
-                    ${index === 0 ? "md:col-span-2 md:row-span-2" : "col-span-1 row-span-1"}
-                  `}
+                                    transition={{ delay: index * 0.05, duration: 0.4 }}
+                                    className="group relative overflow-hidden rounded-2xl bg-card p-2 shadow-md ring-1 ring-border/50 hover:shadow-2xl hover:ring-primary/30 transition-all duration-500 hover:-translate-y-1"
                                 >
-                                    <div className="relative w-full h-full overflow-hidden rounded-xl bg-muted">
+                                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-muted">
                                         <img
                                             src={img}
                                             alt={`${activeTab} view ${index + 1}`}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            loading="lazy"
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                         />
-                                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     </div>
                                 </motion.div>
                             ))}
