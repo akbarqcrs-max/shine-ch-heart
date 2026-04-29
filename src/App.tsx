@@ -14,6 +14,9 @@ import NewsUpdates from "./pages/NewsUpdates";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Members from "./pages/Members";
+import CancerDetail from "./pages/CancerDetail";
+import StoryDetail from "./pages/StoryDetail";
+import ServiceDetail from "./pages/ServiceDetail";
 
 const queryClient = new QueryClient();
 
@@ -29,9 +32,12 @@ const App = () => (
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/members" element={<Members />} />
           <Route path="/what-we-do" element={<WhatWeDo />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/events" element={<Events />} />
           <Route path="/about-cancer" element={<AboutCancer />} />
+          <Route path="/about-cancer/:slug" element={<CancerDetail />} />
           <Route path="/stories-of-hope" element={<StoriesOfHope />} />
+          <Route path="/stories-of-hope/:slug" element={<StoryDetail />} />
           <Route path="/news-updates" element={<NewsUpdates />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

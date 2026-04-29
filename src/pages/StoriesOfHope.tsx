@@ -5,72 +5,17 @@ import PageHeader from "@/components/sections/PageHeader";
 import StoryCard from "@/components/cards/StoryCard";
 import { Button } from "@/components/ui/button";
 import storiesHopeImg from "@/assets/stories-hope.jpg";
-import story1 from "@/assets/story-1.jpg";
-import story2 from "@/assets/story-2.jpg";
-import story3 from "@/assets/story-3.jpg";
-import story4 from "@/assets/story-4.jpg";
+import { Link } from "react-router-dom";
+import { stories as allStories } from "@/data/storiesData";
 
-const featuredStory = {
-  title: "Huda's Journey: From Diagnosis to Victory",
-  excerpt: "Huda Karam's inspiring journey through her cancer treatment shows the power of community support. Through the support of CH Center's programs, Huda gained the strength and confidence to not only overcome her illness but to become an advocate for other patients.",
-  image: story1,
-  date: "December 14, 2024",
-  author: "CH Center Team",
-  fullContent: `
-    When Huda Karam was diagnosed with breast cancer in 2022, she felt her world crumbling around her. As a mother of two young children, the diagnosis was not just about her own health – it was about her family's future.
-
-    "The day I received my diagnosis, I couldn't stop thinking about my children," Huda recalls. "Would I be there for their graduations? Their weddings? Those thoughts kept me up at night."
-
-    That's when Huda discovered CH Center. Through our patient support programs, she found a community that understood her fears and provided practical help during her treatment journey.
-
-    Today, Huda is cancer-free and has become a volunteer at CH Center, helping other patients navigate their own journeys with hope and courage.
-  `,
-};
-
-const stories = [
-  {
-    title: "Little Maryam Rings the Victory Bell",
-    excerpt: "After 18 months of treatment, 6-year-old Maryam rang the victory bell at the hospital, surrounded by the nurses and doctors who helped her fight leukemia.",
-    image: story2,
-    date: "November 28, 2024",
-    href: "/stories-of-hope/maryam",
-  },
-  {
-    title: "A Grandmother's Strength: Fatima's Story",
-    excerpt: "At 68, Fatima was diagnosed with colorectal cancer. With the support of her grandchildren and CH Center, she fought back and now enjoys time with her growing family.",
-    image: story3,
-    date: "October 15, 2024",
-    href: "/stories-of-hope/fatima",
-  },
-  {
-    title: "From Patient to Marathon Runner",
-    excerpt: "Ahmed completed his first marathon just two years after finishing cancer treatment. His journey from hospital bed to finish line inspires everyone at CH Center.",
-    image: story4,
-    date: "September 22, 2024",
-    href: "/stories-of-hope/ahmed",
-  },
-  {
-    title: "The Power of Community: Sarah's Network",
-    excerpt: "When Sarah was diagnosed with ovarian cancer, she found strength in the support group at CH Center. Now she leads the group, helping other women find hope.",
-    image: storiesHopeImg,
-    date: "August 10, 2024",
-    href: "/stories-of-hope/sarah",
-  },
-  {
-    title: "Young Survivor Becomes Cancer Researcher",
-    excerpt: "Diagnosed with lymphoma at 15, Omar survived and dedicated his life to cancer research. Now a PhD candidate, he's working on breakthrough treatments.",
-    image: story1,
-    date: "July 5, 2024",
-    href: "/stories-of-hope/omar",
-  },
-  {
-    title: "Mother and Daughter: Fighting Together",
-    excerpt: "When both Layla and her daughter were diagnosed with breast cancer within months of each other, they fought side by side with CH Center's support.",
-    image: story2,
-    date: "June 18, 2024",
-    href: "/stories-of-hope/layla",
-  },
-];
+const featuredStory = allStories[0];
+const stories = allStories.slice(1).map((s) => ({
+  title: s.title,
+  excerpt: s.excerpt,
+  image: s.image,
+  date: s.date,
+  href: `/stories-of-hope/${s.slug}`,
+}));
 
 const StoriesOfHope = () => {
   return (
@@ -115,8 +60,8 @@ const StoriesOfHope = () => {
                 {featuredStory.excerpt}
               </p>
               <div className="flex items-center gap-4">
-                <Button className="gap-2">
-                  Read Full Story
+                <Button asChild className="gap-2">
+                  <Link to={`/stories-of-hope/${featuredStory.slug}`}>Read Full Story</Link>
                 </Button>
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">Share:</span>

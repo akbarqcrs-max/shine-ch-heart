@@ -22,14 +22,10 @@ import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import FeatureCard from "@/components/cards/FeatureCard";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { serviceDetails } from "@/data/servicesData";
 
 import whatWeDoImg from "@/assets/what-we-do.jpg";
-import serviceMedical from "@/assets/service-medical.jpg";
-import serviceAmbulance from "@/assets/service-ambulance-new.jpg";
-import serviceFuneral from "@/assets/service-funeral.jpg";
-import serviceIftar from "@/assets/service-iftar.jpg";
-import serviceEid from "@/assets/service-eid.jpg";
-import serviceVolunteering from "@/assets/service-volunteering.jpg";
 
 
 const mainServices = [
@@ -104,36 +100,14 @@ const memberBenefits = [
   "Free access to educational materials",
 ];
 
-const communityServices = [
-  {
-    title: "Medical Assistance",
-    description: "Comprehensive medical support including consultations, medications, and treatment coordination for those in need.",
-    image: serviceMedical,
-    icon: Stethoscope,
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    title: "Ambulance Services",
-    description: "24/7 emergency ambulance services ensuring swift medical transportation when every second counts.",
-    image: serviceAmbulance,
-    icon: Ambulance,
-    color: "from-red-500 to-orange-500",
-  },
-  {
-    title: "Funeral Services",
-    description: "Dignified funeral arrangements and support for families during their most difficult times.",
-    image: serviceFuneral,
-    icon: Cross,
-    color: "from-purple-500 to-indigo-500",
-  },
-  {
-    title: "Volunteering",
-    description: "Join our community of dedicated volunteers making a real difference in people's lives.",
-    image: serviceVolunteering,
-    icon: HandHeart,
-    color: "from-pink-500 to-rose-500",
-  },
-];
+const communityServices = serviceDetails.map((s) => ({
+  slug: s.slug,
+  title: s.title,
+  description: s.shortDescription,
+  image: s.image,
+  icon: s.icon,
+  color: s.color,
+}));
 
 
 
@@ -200,6 +174,7 @@ const WhatWeDo = () => {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               >
+                <Link to={`/services/${service.slug}`} className="block">
                 {/* Image Container */}
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -233,6 +208,7 @@ const WhatWeDo = () => {
 
                 {/* Bottom Gradient Border */}
                 <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
+                </Link>
               </motion.div>
             ))}
           </div>

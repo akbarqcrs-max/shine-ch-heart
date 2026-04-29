@@ -22,27 +22,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import aboutCancerImg from "@/assets/about-cancer.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import { cancerDetails } from "@/data/cancerData";
 
-const cancerTypes = [
-  "Breast Cancer",
-  "Lung Cancer",
-  "Prostate Cancer",
-  "Colorectal Cancer",
-  "Skin Cancer",
-  "Leukemia",
-  "Lymphoma",
-  "Pancreatic Cancer",
-  "Ovarian Cancer",
-  "Thyroid Cancer",
-];
+const cancerTypes = cancerDetails.map((c) => ({ name: c.name, slug: c.slug }));
 
-const commonCancers = [
-  { name: "Breast Cancer", count: "Most common in women" },
-  { name: "Lung Cancer", count: "Leading cause of cancer deaths" },
-  { name: "Prostate Cancer", count: "Most common in men" },
-  { name: "Colorectal Cancer", count: "Highly preventable" },
-  { name: "Skin Cancer", count: "Most preventable" },
-];
+const commonCancers = cancerDetails.map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  count: c.tagline,
+}));
 
 const resources = [
   {
@@ -99,6 +88,7 @@ const faqItems = [
 const AboutCancer = () => {
   const [selectedCancer, setSelectedCancer] = useState("");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -131,13 +121,17 @@ const AboutCancer = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {cancerTypes.map((type) => (
-                      <SelectItem key={type} value={type.toLowerCase().replace(" ", "-")}>
-                        {type}
+                      <SelectItem key={type.slug} value={type.slug}>
+                        {type.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-                <Button className="w-full gap-2">
+                <Button
+                  className="w-full gap-2"
+                  onClick={() => selectedCancer && navigate(`/about-cancer/${selectedCancer}`)}
+                  disabled={!selectedCancer}
+                >
                   Explore Cancer Types
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -154,20 +148,24 @@ const AboutCancer = () => {
               <h2 className="font-heading text-2xl font-bold mb-6">Most Common Cancers</h2>
               <div className="space-y-3">
                 {commonCancers.map((cancer, index) => (
-                  <motion.button
+                  <motion.div
                     key={cancer.name}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="w-full flex items-center justify-between p-4 bg-card rounded-lg hover:bg-primary/5 transition-colors text-left group"
                   >
-                    <div>
-                      <span className="font-medium text-primary group-hover:underline">{cancer.name}</span>
-                      <p className="text-sm text-muted-foreground">{cancer.count}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </motion.button>
+                    <Link
+                      to={`/about-cancer/${cancer.slug}`}
+                      className="w-full flex items-center justify-between p-4 bg-card rounded-lg hover:bg-primary/5 transition-colors text-left group"
+                    >
+                      <div>
+                        <span className="font-medium text-primary group-hover:underline">{cancer.name}</span>
+                        <p className="text-sm text-muted-foreground">{cancer.count}</p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
