@@ -28,7 +28,7 @@ const NewsCard = ({
   onClick
 }: NewsCardProps) => {
   const CardWrapper: any = onClick ? 'div' : Link;
-  const wrapperProps: any = onClike ? { onClick, className: "cursor-pointer" } : { to: href };
+  const wrapperProps: any = onClick ? { onClick, className: "cursor-pointer" } : { to: href };
 
   if (featured) {
     return (
