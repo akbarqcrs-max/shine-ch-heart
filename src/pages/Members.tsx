@@ -425,36 +425,114 @@ const patronMembers = [
     }
 ];
 
-const lifeMembers: any[] = [
-    { name: "Life Member 1", image: lifeMember1Img },
-    { name: "Life Member 2", image: lifeMember2Img },
-    { name: "Life Member 3", image: lifeMember3Img },
-    { name: "Life Member 4", image: lifeMember4Img },
-    { name: "Life Member 5", image: lifeMember5Img },
-    { name: "Life Member 6", image: lifeMember6Img },
-    { name: "Life Member 7", image: lifeMember7Img },
-    { name: "Life Member 8", image: lifeMember8Img },
-    { name: "Life Member 9", image: lifeMember9Img },
-    { name: "Life Member 10", image: lifeMember10Img },
-    { name: "Life Member 11", image: lifeMember11Img },
-    { name: "Life Member 12", image: lifeMember12Img },
-    { name: "Life Member 13", image: lifeMember13Img },
-    { name: "Life Member 14", image: lifeMember14Img },
-    { name: "Life Member 15", image: lifeMember15Img },
-    { name: "Life Member 16", image: lifeMember16Img },
-    { name: "Life Member 17", image: lifeMember17Img },
-    { name: "Life Member 18", image: lifeMember18Img },
-    { name: "Life Member 19", image: lifeMember19Img },
-    { name: "Life Member 20", image: lifeMember20Img },
-    { name: "Life Member 21", image: lifeMember21Img },
-    { name: "Life Member 22", image: lifeMember22Img },
-    { name: "Life Member 23", image: lifeMember23Img },
-    { name: "Life Member 24", image: lifeMember24Img },
-    { name: "Life Member 25", image: lifeMember25Img },
-    { name: "Life Member 26", image: lifeMember26Img },
-    { name: "Life Member 27", image: lifeMember27Img },
-    { name: "Life Member 28", image: lifeMember28Img }
+const lifeMemberImages = [
+    lifeMember1Img, lifeMember2Img, lifeMember3Img, lifeMember4Img, lifeMember5Img,
+    lifeMember6Img, lifeMember7Img, lifeMember8Img, lifeMember9Img, lifeMember10Img,
+    lifeMember11Img, lifeMember12Img, lifeMember13Img, lifeMember14Img, lifeMember15Img,
+    lifeMember16Img, lifeMember17Img, lifeMember18Img, lifeMember19Img, lifeMember20Img,
+    lifeMember21Img, lifeMember22Img, lifeMember23Img, lifeMember24Img, lifeMember25Img,
+    lifeMember26Img, lifeMember27Img, lifeMember28Img,
 ];
+
+const lifeMembers = lifeMemberImages.map((img, i) => ({
+    name: `Life Member ${i + 1}`,
+    membershipNo: `L${String(i + 1).padStart(2, "0")}/21`,
+    designation: "Life Member",
+    organization: "CH Centre",
+    place: "Thrissur, Kerala",
+    image: img,
+}));
+
+const associateMembers = Array.from({ length: 12 }).map((_, i) => ({
+    name: `Associate Member ${i + 1}`,
+    membershipNo: `A${String(i + 1).padStart(2, "0")}/21`,
+    designation: "Associate Member",
+    organization: "CH Centre",
+    place: "Thrissur, Kerala",
+    image: lifeMemberImages[i % lifeMemberImages.length],
+}));
+
+type Member = {
+    name: string;
+    membershipNo: string;
+    designation: string;
+    organization: string;
+    place: string;
+    image: string;
+};
+
+const tabs = [
+    {
+        value: "patron",
+        label: "Patron Members",
+        icon: Crown,
+        accent: "Our Pillars",
+        title: "Patron Members",
+        description:
+            "Our Patron members are the pillars of CH Centre, providing continuous support and guidance to our mission of serving humanity with compassion and care.",
+        data: patronMembers,
+    },
+    {
+        value: "life",
+        label: "Life Members",
+        icon: Heart,
+        accent: "Lifetime Support",
+        title: "Life Members",
+        description:
+            "Our Life Members are dedicated patrons who have committed their lifelong support to CH Centre, ensuring the sustainability of our community initiatives.",
+        data: lifeMembers,
+    },
+    {
+        value: "associate",
+        label: "Associate Members",
+        icon: Sparkles,
+        accent: "Growing Family",
+        title: "Associate Members",
+        description:
+            "Our Associate Members stand alongside CH Centre, contributing time, expertise, and goodwill to strengthen our community programs every day.",
+        data: associateMembers,
+    },
+];
+
+const MemberCard = ({ member, index }: { member: Member; index: number }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: Math.min(index * 0.04, 0.5), duration: 0.4 }}
+        className="group bg-card rounded-2xl overflow-hidden shadow-md border border-border/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+    >
+        <div className="relative aspect-[3/4] bg-muted overflow-hidden">
+            <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur text-[10px] font-semibold tracking-wider text-primary">
+                {member.membershipNo}
+            </div>
+        </div>
+        <div className="p-5 space-y-3">
+            <h3 className="font-heading text-base font-bold leading-tight line-clamp-1 group-hover:text-primary transition-colors">
+                {member.name}
+            </h3>
+            <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2">
+                    <Briefcase className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    <span className="line-clamp-1">{member.designation}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Building2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    <span className="line-clamp-1">{member.organization}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    <span className="line-clamp-1">{member.place}</span>
+                </div>
+            </div>
+        </div>
+    </motion.div>
+);
 
 const Members = () => {
     return (
