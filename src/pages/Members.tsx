@@ -78,30 +78,29 @@ import lifeMember26Img from "@/assets/members/life-member-26.png";
 import lifeMember27Img from "@/assets/members/life-member-27.png";
 import lifeMember28Img from "@/assets/members/life-member-28.png";
 
-const members = [
+const patronMembers = [
     {
         name: "Adv. Shaheen Navas",
         membershipNo: "P01/21",
-        address: ["Kalathipparambil House", "P.O. Natika", "Thrissur Dt - 680 566"],
+        designation: "Advocate",
+        organization: "High Court of Kerala",
+        place: "Natika, Thrissur",
         image: advShaheenNavasImg
     },
     {
         name: "E.M. Ashraf Kecheri",
         membershipNo: "P02/21",
-        address: ["Manaly House", "Kecheri"],
+        designation: "Businessman",
+        organization: "Manaly Group",
+        place: "Kecheri, Thrissur",
         image: emAshrafKecheriImg
     },
     {
         name: "Rasheed Pudussery",
         membershipNo: "P03/21",
-        address: [
-            "Pudussery House",
-            "P.O. Natika",
-            "Thrissur Dt - 680 566",
-            "MD, Trianze Trading LLC",
-            "Dubai",
-            "T H R I S S U R"
-        ],
+        designation: "Managing Director",
+        organization: "Trianze Trading LLC",
+        place: "Dubai / Thrissur",
         image: rasheedPudusseryImg
     },
     {
