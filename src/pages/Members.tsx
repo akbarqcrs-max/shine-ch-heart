@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Users } from "lucide-react";
+import { useState } from "react";
+import { Users, Briefcase, Building2, MapPin, Crown, Heart, Sparkles } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg"; // Reusing image for now
