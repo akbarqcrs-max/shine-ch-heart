@@ -106,241 +106,321 @@ const patronMembers = [
     {
         name: "Patron Member 4",
         membershipNo: "P04/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member4Img
     },
     {
         name: "Patron Member 5",
         membershipNo: "P05/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member5Img
     },
     {
         name: "Patron Member 6",
         membershipNo: "P06/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member6Img
     },
     {
         name: "Patron Member 7",
         membershipNo: "P07/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member7Img
     },
     {
         name: "Patron Member 8",
         membershipNo: "P08/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member8Img
     },
     {
         name: "Patron Member 9",
         membershipNo: "P09/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member9Img
     },
     {
         name: "Patron Member 10",
         membershipNo: "P10/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member10Img
     },
     {
         name: "Patron Member 11",
         membershipNo: "P11/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member11Img
     },
     {
         name: "Patron Member 12",
         membershipNo: "P12/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member12Img
     },
     {
         name: "Patron Member 13",
         membershipNo: "P13/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member13Img
     },
     {
         name: "Patron Member 14",
         membershipNo: "P14/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member14Img
     },
     {
         name: "Patron Member 15",
         membershipNo: "P15/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member15Img
     },
     {
         name: "Patron Member 16",
         membershipNo: "P16/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member16Img
     },
     {
         name: "Patron Member 17",
         membershipNo: "P17/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member17Img
     },
     {
         name: "Patron Member 18",
         membershipNo: "P18/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member18Img
     },
     {
         name: "Patron Member 19",
         membershipNo: "P19/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member19Img
     },
     {
         name: "Patron Member 20",
         membershipNo: "P20/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member20Img
     },
     {
         name: "Patron Member 21",
         membershipNo: "P21/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member21Img
     },
     {
         name: "Patron Member 22",
         membershipNo: "P22/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member22Img
     },
     {
         name: "Patron Member 23",
         membershipNo: "P23/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member23Img
     },
     {
         name: "Patron Member 24",
         membershipNo: "P24/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member24Img
     },
     {
         name: "Patron Member 25",
         membershipNo: "P25/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member25Img
     },
     {
         name: "Patron Member 26",
         membershipNo: "P26/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member26Img
     },
     {
         name: "Patron Member 27",
         membershipNo: "P27/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member27Img
     },
     {
         name: "Patron Member 28",
         membershipNo: "P28/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member28Img
     },
     {
         name: "Patron Member 29",
         membershipNo: "P29/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member29Img
     },
     {
         name: "Patron Member 30",
         membershipNo: "P30/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member30Img
     },
     {
         name: "Patron Member 31",
         membershipNo: "P31/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member31Img
     },
     {
         name: "Patron Member 32",
         membershipNo: "P32/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member32Img
     },
     {
         name: "Patron Member 33",
         membershipNo: "P33/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member33Img
     },
     {
         name: "Patron Member 34",
         membershipNo: "P34/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member34Img
     },
     {
         name: "Patron Member 35",
         membershipNo: "P35/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member35Img
     },
     {
         name: "Patron Member 36",
         membershipNo: "P36/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member36Img
     },
     {
         name: "Patron Member 37",
         membershipNo: "P37/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member37Img
     },
     {
         name: "Patron Member 38",
         membershipNo: "P38/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member38Img
     },
     {
         name: "Patron Member 39",
         membershipNo: "P39/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member39Img
     },
     {
         name: "Patron Member 40",
         membershipNo: "P40/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member40Img
     },
     {
         name: "Patron Member 41",
         membershipNo: "P41/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member41Img
     },
     {
         name: "Patron Member 42",
         membershipNo: "P42/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member42Img
     },
     {
         name: "Patron Member 43",
         membershipNo: "P43/21",
-        address: [],
+        designation: "Patron Member",
+        organization: "CH Centre",
+        place: "Thrissur, Kerala",
         image: member43Img
     }
 ];
