@@ -535,6 +535,9 @@ const MemberCard = ({ member, index }: { member: Member; index: number }) => (
 );
 
 const Members = () => {
+    const [activeTab, setActiveTab] = useState("patron");
+    const active = tabs.find((t) => t.value === activeTab) ?? tabs[0];
+
     return (
         <Layout>
             <PageHeader
@@ -546,131 +549,71 @@ const Members = () => {
 
             <section className="py-20">
                 <div className="container-custom">
-                    <div className="text-center mb-16">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                        >
-                            <Users className="w-8 h-8 text-primary" />
-                        </motion.div>
-                        <motion.span
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
-                        >
-                            Our Pillars
-                        </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-                        >
-                            <span className="text-gradient-heading">Patron Members</span>
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-                        >
-                            Our Patron members are the pillars of CH Centre, providing continuous support and guidance to our mission of serving humanity through compassion and care.
-                        </motion.p>
-                    </div>
+                    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                        {/* Tab triggers */}
+                        <div className="flex justify-center mb-12">
+                            <TabsList className="h-auto p-1.5 bg-muted/60 backdrop-blur rounded-2xl flex flex-wrap gap-1">
+                                {tabs.map((t) => {
+                                    const Icon = t.icon;
+                                    return (
+                                        <TabsTrigger
+                                            key={t.value}
+                                            value={t.value}
+                                            className="gap-2 px-5 py-2.5 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0891b2] data-[state=active]:via-[#0d9488] data-[state=active]:to-[#22c55e] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
+                                        >
+                                            <Icon className="w-4 h-4" />
+                                            <span className="font-medium">{t.label}</span>
+                                            <span className="ml-1 px-2 py-0.5 rounded-full bg-background/40 text-xs font-semibold">
+                                                {t.data.length}
+                                            </span>
+                                        </TabsTrigger>
+                                    );
+                                })}
+                            </TabsList>
+                        </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-                        {members.map((member, index) => (
-                            <motion.div
-                                key={member.membershipNo}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bg-background rounded-2xl overflow-hidden shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
-                            >
-                                <div className="relative aspect-[3/4] bg-muted overflow-hidden">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
-                            </motion.div>
+                        {/* Animated heading per tab */}
+                        <motion.div
+                            key={active.value + "-header"}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="text-center mb-14"
+                        >
+                            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <active.icon className="w-8 h-8 text-primary" />
+                            </div>
+                            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                                {active.accent}
+                            </span>
+                            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                                <span className="text-gradient-heading">{active.title}</span>
+                            </h2>
+                            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                                {active.description}
+                            </p>
+                        </motion.div>
+
+                        {tabs.map((t) => (
+                            <TabsContent key={t.value} value={t.value} className="mt-0">
+                                {t.data.length > 0 ? (
+                                    <motion.div
+                                        key={t.value}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6"
+                                    >
+                                        {t.data.map((member, index) => (
+                                            <MemberCard key={member.membershipNo} member={member} index={index} />
+                                        ))}
+                                    </motion.div>
+                                ) : (
+                                    <div className="text-center py-20 text-muted-foreground">Coming Soon</div>
+                                )}
+                            </TabsContent>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-20 bg-section-alt">
-                <div className="container-custom">
-                    <div className="text-center mb-16">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                        >
-                            <Users className="w-8 h-8 text-primary" />
-                        </motion.div>
-                        <motion.span
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4"
-                        >
-                            Lifetime Support
-                        </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-                        >
-                            <span className="text-gradient-heading">Life Members</span>
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-                        >
-                            Our Life Members are dedicated patrons who have committed their lifelong support to the CH Centre, ensuring the sustainability of our community initiatives and services.
-                        </motion.p>
-                    </div>
-
-                    {lifeMembers.length > 0 ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-                            {lifeMembers.map((member, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-background rounded-2xl overflow-hidden shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 group"
-                                >
-                                    <div className="relative aspect-[3/4] bg-muted overflow-hidden">
-                                        <img
-                                            src={member.image}
-                                            alt={member.name || `Life Member ${index + 1}`}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="text-center py-12 text-muted-foreground">
-                            Coming Soon
-                        </div>
-                    )}
+                    </Tabs>
                 </div>
             </section>
         </Layout>
