@@ -575,7 +575,22 @@ const MemberRow = ({ member, index }: { member: Member; index: number }) => (
 
 const Members = () => {
     const [activeTab, setActiveTab] = useState("patron");
+    const [query, setQuery] = useState("");
+    const [view, setView] = useState<"grid" | "list">("grid");
     const active = tabs.find((t) => t.value === activeTab) ?? tabs[0];
+
+    const filtered = useMemo(() => {
+        const q = query.trim().toLowerCase();
+        if (!q) return active.data;
+        return active.data.filter((m) =>
+            [m.name, m.membershipNo, m.designation, m.organization, m.place]
+                .join(" ")
+                .toLowerCase()
+                .includes(q)
+        );
+    }, [active, query]);
+
+    const totalMembers = patronMembers.length + lifeMembers.length + associateMembers.length;
 
     return (
         <Layout>
@@ -586,11 +601,45 @@ const Members = () => {
                 image={whoWeAreImg}
             />
 
-            <section className="py-20">
+            {/* Stats strip */}
+            <section className="relative -mt-10 z-10">
                 <div className="container-custom">
-                    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 md:p-7 rounded-3xl bg-card border border-border/60 shadow-2xl"
+                    >
+                        {[
+                            { label: "Total Members", value: totalMembers, icon: Sparkles },
+                            { label: "Patron Members", value: patronMembers.length, icon: Crown },
+                            { label: "Life Members", value: lifeMembers.length, icon: Heart },
+                            { label: "Associate Members", value: associateMembers.length, icon: Award },
+                        ].map((s) => {
+                            const Icon = s.icon;
+                            return (
+                                <div key={s.label} className="flex items-center gap-3 md:gap-4">
+                                    <div className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#0891b2] via-[#0d9488] to-[#22c55e] flex items-center justify-center text-white shadow-md">
+                                        <Icon className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="font-heading text-2xl md:text-3xl font-bold leading-none">
+                                            <span className="text-gradient-heading">{s.value}+</span>
+                                        </div>
+                                        <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.label}</div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="py-16 md:py-20">
+                <div className="container-custom">
+                    <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v); setQuery(""); }} className="w-full">
                         {/* Tab triggers */}
-                        <div className="flex justify-center mb-12">
+                        <div className="flex justify-center mb-10">
                             <TabsList className="h-auto p-1.5 bg-muted/60 backdrop-blur rounded-2xl flex flex-wrap gap-1">
                                 {tabs.map((t) => {
                                     const Icon = t.icon;
@@ -598,7 +647,7 @@ const Members = () => {
                                         <TabsTrigger
                                             key={t.value}
                                             value={t.value}
-                                            className="gap-2 px-5 py-2.5 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0891b2] data-[state=active]:via-[#0d9488] data-[state=active]:to-[#22c55e] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
+                                            className="gap-2 px-4 sm:px-5 py-2.5 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0891b2] data-[state=active]:via-[#0d9488] data-[state=active]:to-[#22c55e] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
                                         >
                                             <Icon className="w-4 h-4" />
                                             <span className="font-medium">{t.label}</span>
@@ -617,38 +666,88 @@ const Members = () => {
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="text-center mb-14"
+                            className="text-center mb-10"
                         >
-                            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <active.icon className="w-8 h-8 text-primary" />
-                            </div>
-                            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-4">
                                 {active.accent}
                             </span>
-                            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                                 <span className="text-gradient-heading">{active.title}</span>
                             </h2>
-                            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                                 {active.description}
                             </p>
                         </motion.div>
 
+                        {/* Toolbar: search + view toggle */}
+                        <div className="flex flex-col sm:flex-row gap-3 mb-8 items-stretch sm:items-center justify-between">
+                            <div className="relative flex-1 max-w-md">
+                                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                <Input
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder={`Search ${active.label.toLowerCase()}...`}
+                                    className="pl-10 h-11 rounded-xl bg-card border-border/60"
+                                />
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <span className="text-sm text-muted-foreground hidden sm:inline">
+                                    Showing <span className="font-semibold text-foreground">{filtered.length}</span> of {active.data.length}
+                                </span>
+                                <div className="inline-flex p-1 bg-muted/60 rounded-xl">
+                                    <button
+                                        onClick={() => setView("grid")}
+                                        className={`p-2 rounded-lg transition-all ${view === "grid" ? "bg-background shadow-sm text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                                        aria-label="Grid view"
+                                    >
+                                        <LayoutGrid className="w-4 h-4" />
+                                    </button>
+                                    <button
+                                        onClick={() => setView("list")}
+                                        className={`p-2 rounded-lg transition-all ${view === "list" ? "bg-background shadow-sm text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                                        aria-label="List view"
+                                    >
+                                        <ListIcon className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         {tabs.map((t) => (
                             <TabsContent key={t.value} value={t.value} className="mt-0">
-                                {t.data.length > 0 ? (
-                                    <motion.div
-                                        key={t.value}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6"
-                                    >
-                                        {t.data.map((member, index) => (
-                                            <MemberCard key={member.membershipNo} member={member} index={index} />
-                                        ))}
-                                    </motion.div>
+                                {filtered.length > 0 ? (
+                                    view === "grid" ? (
+                                        <motion.div
+                                            key={t.value + "-grid"}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+                                        >
+                                            {filtered.map((member, index) => (
+                                                <MemberCard key={member.membershipNo} member={member} index={index} />
+                                            ))}
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key={t.value + "-list"}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4"
+                                        >
+                                            {filtered.map((member, index) => (
+                                                <MemberRow key={member.membershipNo} member={member} index={index} />
+                                            ))}
+                                        </motion.div>
+                                    )
                                 ) : (
-                                    <div className="text-center py-20 text-muted-foreground">Coming Soon</div>
+                                    <div className="text-center py-20">
+                                        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-muted flex items-center justify-center">
+                                            <Search className="w-7 h-7 text-muted-foreground" />
+                                        </div>
+                                        <p className="text-muted-foreground">No members found matching "{query}"</p>
+                                    </div>
                                 )}
                             </TabsContent>
                         ))}
