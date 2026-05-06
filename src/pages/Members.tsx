@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Users, Briefcase, Building2, MapPin, Crown, Heart, Sparkles } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Briefcase, Building2, MapPin, Crown, Heart, Sparkles, Search, LayoutGrid, List as ListIcon, Award } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg"; // Reusing image for now
@@ -496,31 +497,41 @@ const tabs = [
 
 const MemberCard = ({ member, index }: { member: Member; index: number }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: Math.min(index * 0.04, 0.5), duration: 0.4 }}
-        className="group bg-card rounded-2xl overflow-hidden shadow-md border border-border/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+        transition={{ delay: Math.min(index * 0.03, 0.5), duration: 0.4 }}
+        className="group relative"
     >
-        <div className="relative aspect-[3/4] bg-muted overflow-hidden">
-            <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur text-[10px] font-semibold tracking-wider text-primary">
-                {member.membershipNo}
-            </div>
-        </div>
-        <div className="p-5 space-y-3">
-            <h3 className="font-heading text-base font-bold leading-tight line-clamp-1 group-hover:text-primary transition-colors">
-                {member.name}
-            </h3>
-            <div className="space-y-2 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2">
-                    <Briefcase className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                    <span className="line-clamp-1">{member.designation}</span>
+        {/* Gradient glow ring on hover */}
+        <div className="absolute -inset-[1px] rounded-[1.25rem] bg-gradient-to-br from-[#0891b2] via-[#0d9488] to-[#22c55e] opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-500" />
+
+        <div className="relative bg-card rounded-[1.2rem] overflow-hidden border border-border/70 shadow-[0_4px_18px_-6px_hsl(var(--foreground)/0.12)] group-hover:shadow-[0_24px_50px_-18px_hsl(var(--primary)/0.35)] group-hover:-translate-y-1.5 transition-all duration-500">
+            <div className="relative aspect-[4/5] bg-gradient-to-br from-muted/60 to-muted overflow-hidden">
+                <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+                />
+                {/* Bottom gradient for text */}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                {/* Membership badge */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur shadow-sm">
+                    <Award className="w-3 h-3 text-primary" />
+                    <span className="text-[10px] font-bold tracking-wider text-primary">{member.membershipNo}</span>
                 </div>
+
+                {/* Name + designation overlaid */}
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <h3 className="font-heading text-base md:text-[17px] font-bold leading-tight line-clamp-1 drop-shadow">
+                        {member.name}
+                    </h3>
+                    <p className="text-[11px] text-white/85 line-clamp-1 mt-0.5">{member.designation}</p>
+                </div>
+            </div>
+
+            {/* Bottom info strip */}
+            <div className="p-4 space-y-1.5 text-xs text-muted-foreground bg-card">
                 <div className="flex items-center gap-2">
                     <Building2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                     <span className="line-clamp-1">{member.organization}</span>
@@ -534,9 +545,52 @@ const MemberCard = ({ member, index }: { member: Member; index: number }) => (
     </motion.div>
 );
 
+const MemberRow = ({ member, index }: { member: Member; index: number }) => (
+    <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: Math.min(index * 0.02, 0.4), duration: 0.35 }}
+        className="group flex items-center gap-4 p-3 sm:p-4 rounded-2xl bg-card border border-border/60 hover:border-primary/40 hover:shadow-lg transition-all"
+    >
+        <div className="relative w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-muted">
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+        <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-heading font-bold text-sm sm:text-base truncate group-hover:text-primary transition-colors">
+                    {member.name}
+                </h3>
+                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-semibold tracking-wide">
+                    {member.membershipNo}
+                </span>
+            </div>
+            <div className="mt-1.5 grid sm:grid-cols-3 gap-1 sm:gap-3 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1.5 truncate"><Briefcase className="w-3 h-3 text-primary" />{member.designation}</span>
+                <span className="flex items-center gap-1.5 truncate"><Building2 className="w-3 h-3 text-primary" />{member.organization}</span>
+                <span className="flex items-center gap-1.5 truncate"><MapPin className="w-3 h-3 text-primary" />{member.place}</span>
+            </div>
+        </div>
+    </motion.div>
+);
+
 const Members = () => {
     const [activeTab, setActiveTab] = useState("patron");
+    const [query, setQuery] = useState("");
+    const [view, setView] = useState<"grid" | "list">("grid");
     const active = tabs.find((t) => t.value === activeTab) ?? tabs[0];
+
+    const filtered = useMemo(() => {
+        const q = query.trim().toLowerCase();
+        if (!q) return active.data;
+        return active.data.filter((m) =>
+            [m.name, m.membershipNo, m.designation, m.organization, m.place]
+                .join(" ")
+                .toLowerCase()
+                .includes(q)
+        );
+    }, [active, query]);
+
+    const totalMembers = patronMembers.length + lifeMembers.length + associateMembers.length;
 
     return (
         <Layout>
@@ -547,11 +601,45 @@ const Members = () => {
                 image={whoWeAreImg}
             />
 
-            <section className="py-20">
+            {/* Stats strip */}
+            <section className="relative -mt-10 z-10">
                 <div className="container-custom">
-                    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 md:p-7 rounded-3xl bg-card border border-border/60 shadow-2xl"
+                    >
+                        {[
+                            { label: "Total Members", value: totalMembers, icon: Sparkles },
+                            { label: "Patron Members", value: patronMembers.length, icon: Crown },
+                            { label: "Life Members", value: lifeMembers.length, icon: Heart },
+                            { label: "Associate Members", value: associateMembers.length, icon: Award },
+                        ].map((s) => {
+                            const Icon = s.icon;
+                            return (
+                                <div key={s.label} className="flex items-center gap-3 md:gap-4">
+                                    <div className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#0891b2] via-[#0d9488] to-[#22c55e] flex items-center justify-center text-white shadow-md">
+                                        <Icon className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="font-heading text-2xl md:text-3xl font-bold leading-none">
+                                            <span className="text-gradient-heading">{s.value}+</span>
+                                        </div>
+                                        <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.label}</div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="py-16 md:py-20">
+                <div className="container-custom">
+                    <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v); setQuery(""); }} className="w-full">
                         {/* Tab triggers */}
-                        <div className="flex justify-center mb-12">
+                        <div className="flex justify-center mb-10">
                             <TabsList className="h-auto p-1.5 bg-muted/60 backdrop-blur rounded-2xl flex flex-wrap gap-1">
                                 {tabs.map((t) => {
                                     const Icon = t.icon;
@@ -559,7 +647,7 @@ const Members = () => {
                                         <TabsTrigger
                                             key={t.value}
                                             value={t.value}
-                                            className="gap-2 px-5 py-2.5 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0891b2] data-[state=active]:via-[#0d9488] data-[state=active]:to-[#22c55e] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
+                                            className="gap-2 px-4 sm:px-5 py-2.5 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0891b2] data-[state=active]:via-[#0d9488] data-[state=active]:to-[#22c55e] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all"
                                         >
                                             <Icon className="w-4 h-4" />
                                             <span className="font-medium">{t.label}</span>
@@ -578,38 +666,88 @@ const Members = () => {
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="text-center mb-14"
+                            className="text-center mb-10"
                         >
-                            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <active.icon className="w-8 h-8 text-primary" />
-                            </div>
-                            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-4">
                                 {active.accent}
                             </span>
-                            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                                 <span className="text-gradient-heading">{active.title}</span>
                             </h2>
-                            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                                 {active.description}
                             </p>
                         </motion.div>
 
+                        {/* Toolbar: search + view toggle */}
+                        <div className="flex flex-col sm:flex-row gap-3 mb-8 items-stretch sm:items-center justify-between">
+                            <div className="relative flex-1 max-w-md">
+                                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                <Input
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder={`Search ${active.label.toLowerCase()}...`}
+                                    className="pl-10 h-11 rounded-xl bg-card border-border/60"
+                                />
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <span className="text-sm text-muted-foreground hidden sm:inline">
+                                    Showing <span className="font-semibold text-foreground">{filtered.length}</span> of {active.data.length}
+                                </span>
+                                <div className="inline-flex p-1 bg-muted/60 rounded-xl">
+                                    <button
+                                        onClick={() => setView("grid")}
+                                        className={`p-2 rounded-lg transition-all ${view === "grid" ? "bg-background shadow-sm text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                                        aria-label="Grid view"
+                                    >
+                                        <LayoutGrid className="w-4 h-4" />
+                                    </button>
+                                    <button
+                                        onClick={() => setView("list")}
+                                        className={`p-2 rounded-lg transition-all ${view === "list" ? "bg-background shadow-sm text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                                        aria-label="List view"
+                                    >
+                                        <ListIcon className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         {tabs.map((t) => (
                             <TabsContent key={t.value} value={t.value} className="mt-0">
-                                {t.data.length > 0 ? (
-                                    <motion.div
-                                        key={t.value}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6"
-                                    >
-                                        {t.data.map((member, index) => (
-                                            <MemberCard key={member.membershipNo} member={member} index={index} />
-                                        ))}
-                                    </motion.div>
+                                {filtered.length > 0 ? (
+                                    view === "grid" ? (
+                                        <motion.div
+                                            key={t.value + "-grid"}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+                                        >
+                                            {filtered.map((member, index) => (
+                                                <MemberCard key={member.membershipNo} member={member} index={index} />
+                                            ))}
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key={t.value + "-list"}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4"
+                                        >
+                                            {filtered.map((member, index) => (
+                                                <MemberRow key={member.membershipNo} member={member} index={index} />
+                                            ))}
+                                        </motion.div>
+                                    )
                                 ) : (
-                                    <div className="text-center py-20 text-muted-foreground">Coming Soon</div>
+                                    <div className="text-center py-20">
+                                        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-muted flex items-center justify-center">
+                                            <Search className="w-7 h-7 text-muted-foreground" />
+                                        </div>
+                                        <p className="text-muted-foreground">No members found matching "{query}"</p>
+                                    </div>
                                 )}
                             </TabsContent>
                         ))}
