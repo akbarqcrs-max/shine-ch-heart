@@ -497,31 +497,41 @@ const tabs = [
 
 const MemberCard = ({ member, index }: { member: Member; index: number }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: Math.min(index * 0.04, 0.5), duration: 0.4 }}
-        className="group bg-card rounded-2xl overflow-hidden shadow-md border border-border/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+        transition={{ delay: Math.min(index * 0.03, 0.5), duration: 0.4 }}
+        className="group relative"
     >
-        <div className="relative aspect-[3/4] bg-muted overflow-hidden">
-            <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur text-[10px] font-semibold tracking-wider text-primary">
-                {member.membershipNo}
-            </div>
-        </div>
-        <div className="p-5 space-y-3">
-            <h3 className="font-heading text-base font-bold leading-tight line-clamp-1 group-hover:text-primary transition-colors">
-                {member.name}
-            </h3>
-            <div className="space-y-2 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2">
-                    <Briefcase className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                    <span className="line-clamp-1">{member.designation}</span>
+        {/* Gradient glow ring on hover */}
+        <div className="absolute -inset-[1px] rounded-[1.25rem] bg-gradient-to-br from-[#0891b2] via-[#0d9488] to-[#22c55e] opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-500" />
+
+        <div className="relative bg-card rounded-[1.2rem] overflow-hidden border border-border/70 shadow-[0_4px_18px_-6px_hsl(var(--foreground)/0.12)] group-hover:shadow-[0_24px_50px_-18px_hsl(var(--primary)/0.35)] group-hover:-translate-y-1.5 transition-all duration-500">
+            <div className="relative aspect-[4/5] bg-gradient-to-br from-muted/60 to-muted overflow-hidden">
+                <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+                />
+                {/* Bottom gradient for text */}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                {/* Membership badge */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur shadow-sm">
+                    <Award className="w-3 h-3 text-primary" />
+                    <span className="text-[10px] font-bold tracking-wider text-primary">{member.membershipNo}</span>
                 </div>
+
+                {/* Name + designation overlaid */}
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <h3 className="font-heading text-base md:text-[17px] font-bold leading-tight line-clamp-1 drop-shadow">
+                        {member.name}
+                    </h3>
+                    <p className="text-[11px] text-white/85 line-clamp-1 mt-0.5">{member.designation}</p>
+                </div>
+            </div>
+
+            {/* Bottom info strip */}
+            <div className="p-4 space-y-1.5 text-xs text-muted-foreground bg-card">
                 <div className="flex items-center gap-2">
                     <Building2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                     <span className="line-clamp-1">{member.organization}</span>
@@ -530,6 +540,34 @@ const MemberCard = ({ member, index }: { member: Member; index: number }) => (
                     <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                     <span className="line-clamp-1">{member.place}</span>
                 </div>
+            </div>
+        </div>
+    </motion.div>
+);
+
+const MemberRow = ({ member, index }: { member: Member; index: number }) => (
+    <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: Math.min(index * 0.02, 0.4), duration: 0.35 }}
+        className="group flex items-center gap-4 p-3 sm:p-4 rounded-2xl bg-card border border-border/60 hover:border-primary/40 hover:shadow-lg transition-all"
+    >
+        <div className="relative w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-muted">
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+        <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-heading font-bold text-sm sm:text-base truncate group-hover:text-primary transition-colors">
+                    {member.name}
+                </h3>
+                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-semibold tracking-wide">
+                    {member.membershipNo}
+                </span>
+            </div>
+            <div className="mt-1.5 grid sm:grid-cols-3 gap-1 sm:gap-3 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1.5 truncate"><Briefcase className="w-3 h-3 text-primary" />{member.designation}</span>
+                <span className="flex items-center gap-1.5 truncate"><Building2 className="w-3 h-3 text-primary" />{member.organization}</span>
+                <span className="flex items-center gap-1.5 truncate"><MapPin className="w-3 h-3 text-primary" />{member.place}</span>
             </div>
         </div>
     </motion.div>
