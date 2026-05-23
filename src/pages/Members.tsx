@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import { Briefcase, Building2, MapPin, Crown, Heart, Sparkles, Search, LayoutGrid, List as ListIcon, Award } from "lucide-react";
+import { Briefcase, Building2, MapPin, Crown, Heart, Sparkles, Search, LayoutGrid, List as ListIcon, Award, ArrowRight, Mail, Phone } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import PageHeader from "@/components/sections/PageHeader";
 import whoWeAreImg from "@/assets/who-we-are.jpg"; // Reusing image for now
@@ -752,6 +754,73 @@ const Members = () => {
                             </TabsContent>
                         ))}
                     </Tabs>
+                </div>
+            </section>
+
+            {/* CTA: Become a Member */}
+            <section className="relative py-20 md:py-28 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0891b2] via-[#0d9488] to-[#22c55e]" />
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4) 0, transparent 40%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.3) 0, transparent 40%)" }} />
+                <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
+                <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
+
+                <div className="container relative mx-auto px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                        className="max-w-5xl mx-auto text-center text-white"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-6">
+                            <Sparkles className="w-4 h-4" />
+                            <span className="text-sm font-medium tracking-wide">Join the movement</span>
+                        </div>
+                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                            Want to become a member?
+                        </h2>
+                        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
+                            Connect with our team and be part of a community uniting for the CH Centre. Together we can make care, support and hope reach every life that needs it.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                            <Button asChild size="lg" className="bg-white text-[#0d9488] hover:bg-white/95 hover:scale-[1.03] shadow-xl h-12 px-7 rounded-xl font-semibold">
+                                <Link to="/contact">
+                                    Connect with our team
+                                    <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </Button>
+                            <Button asChild size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 hover:text-white h-12 px-7 rounded-xl font-semibold">
+                                <a href="mailto:info@chcentre.org">
+                                    <Mail className="w-4 h-4" />
+                                    Email us
+                                </a>
+                            </Button>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                            {[
+                                { icon: Crown, title: "Patron Member", desc: "Lead with vision and impact" },
+                                { icon: Heart, title: "Life Member", desc: "A lifelong commitment to care" },
+                                { icon: Award, title: "Associate Member", desc: "Support the mission together" },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={item.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+                                    className="p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors"
+                                >
+                                    <div className="w-10 h-10 mx-auto mb-3 rounded-xl bg-white/20 flex items-center justify-center">
+                                        <item.icon className="w-5 h-5" />
+                                    </div>
+                                    <h3 className="font-semibold mb-1">{item.title}</h3>
+                                    <p className="text-sm text-white/80">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </Layout>
